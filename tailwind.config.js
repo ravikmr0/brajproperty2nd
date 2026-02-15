@@ -1,0 +1,66 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        saffron: {
+          50: '#fff8f0',
+          100: '#fff0db',
+          200: '#ffddb3',
+          300: '#ffc680',
+          400: '#ffab4d',
+          500: '#ff8c1a',
+          600: '#e67300',
+          700: '#b35900',
+          800: '#804000',
+          900: '#4d2600',
+        },
+        gold: {
+          50: '#fffdf5',
+          100: '#fffbe6',
+          200: '#fff5c2',
+          300: '#ffee99',
+          400: '#ffe066',
+          500: '#ffd633',
+          600: '#e6bf00',
+          700: '#b39500',
+          800: '#806a00',
+          900: '#4d4000',
+        },
+        spiritual: {
+          50: '#f5fff5',
+          100: '#e6ffe6',
+          200: '#b3ffb3',
+          300: '#80ff80',
+          400: '#4dff4d',
+          500: '#1aff1a',
+          600: '#00e600',
+          700: '#00b300',
+          800: '#008000',
+          900: '#004d00',
+        },
+        temple: {
+          50: '#fdf8f0',
+          100: '#faecd9',
+          200: '#f4d5a8',
+          300: '#e8b76d',
+          400: '#d4943e',
+          500: '#bf7722',
+          600: '#a65f19',
+          700: '#854b16',
+          800: '#6d3d18',
+          900: '#5c3417',
+        },
+      },
+      fontFamily: {
+        heading: ['Georgia', 'serif'],
+        body: ['Inter', 'system-ui', 'sans-serif'],
+      },
+    },
+  },
+  plugins: [],
+}
