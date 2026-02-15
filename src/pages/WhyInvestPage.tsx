@@ -16,50 +16,119 @@ export default function WhyInvestPage() {
         </div>
       </section>
 
-      {/* Key Points */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Key Highlights - Premium Design */}
+      <section className="py-20 md:py-32 relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-saffron-50/30">
+        {/* Background decoration */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,153,51,0.08),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(139,69,19,0.05),transparent_50%)]"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-gradient-to-r from-saffron-500 to-temple-600 text-white text-xs font-bold uppercase tracking-widest rounded-full shadow-lg mb-4">
+              Prime Investment Advantages
+            </span>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-gray-900 mb-4">
+              Why <span className="text-transparent bg-clip-text bg-gradient-to-r from-saffron-500 to-temple-600">Vrindavan</span> Stands Out
+            </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Experience the perfect blend of spiritual significance and exceptional ROI
+            </p>
+          </div>
+
+          {/* Premium Cards Grid */}
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {[
               {
+                gradient: 'from-blue-500 to-cyan-500',
                 icon: TrendingUp,
-                title: 'Rapidly Growing Market',
-                desc: "Vrindavan's real estate has seen 25-40% annual appreciation. With upcoming infrastructure projects like the Delhi-Mumbai Expressway, growth is set to accelerate further.",
+                iconBg: 'bg-blue-50',
+                iconColor: 'text-blue-600',
+                title: 'Rapidly Growing Spiritual & Tourist Destination',
+                desc: "Vrindavan's real estate has seen 25-40% annual appreciation. With over 50 lakh annual tourists and upcoming infrastructure like Delhi-Mumbai Expressway, growth is accelerating exponentially.",
+                badge: 'High Growth',
+                badgeColor: 'bg-blue-100 text-blue-700'
               },
               {
-                icon: Building2,
-                title: 'Spiritual Tourism Boom',
-                desc: 'Over 50 lakh tourists visit Vrindavan annually. New temples like Chandrodaya Mandir are attracting global attention, driving massive demand for properties.',
-              },
-              {
+                gradient: 'from-emerald-500 to-teal-500',
                 icon: IndianRupee,
-                title: 'Lower Entry Cost',
-                desc: 'Compared to metros like Delhi, Mumbai, or Bangalore, Vrindavan offers prime plots at a fraction of the cost with much higher appreciation potential.',
+                iconBg: 'bg-emerald-50',
+                iconColor: 'text-emerald-600',
+                title: 'High Rental & Resale Potential',
+                desc: 'Properties in Vrindavan command excellent rental yields year-round. Strategic location near temples ensures consistent demand with strong capital appreciation and quick resale opportunities.',
+                badge: 'Strong ROI',
+                badgeColor: 'bg-emerald-100 text-emerald-700'
               },
               {
-                icon: Heart,
-                title: 'Emotional + Financial Value',
-                desc: 'Owning land in the divine city of Lord Krishna offers both spiritual fulfillment and excellent financial returns — a rare combination.',
-              },
-              {
-                icon: Users,
-                title: 'Rental Income Potential',
-                desc: 'With millions of pilgrims visiting yearly, properties in Vrindavan command excellent rental yields, especially during festival seasons.',
-              },
-              {
+                gradient: 'from-purple-500 to-pink-500',
                 icon: MapPin,
-                title: 'Strategic Location',
-                desc: "Just 150 km from Delhi with excellent road connectivity. The upcoming metro and highway projects will further boost Vrindavan's accessibility.",
+                iconBg: 'bg-purple-50',
+                iconColor: 'text-purple-600',
+                title: 'Affordable Compared to Metro Cities',
+                desc: 'Invest in prime plots at a fraction of metro city costs. Just 150 km from Delhi with superior appreciation rates—get more land, better returns, and lower entry barriers.',
+                badge: 'Best Value',
+                badgeColor: 'bg-purple-100 text-purple-700'
               },
-            ].map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all border border-gray-100 group">
-                <div className="w-14 h-14 bg-saffron-50 group-hover:bg-saffron-500 rounded-xl flex items-center justify-center mb-5 transition-colors">
-                  <Icon className="w-7 h-7 text-saffron-500 group-hover:text-white transition-colors" />
+              {
+                gradient: 'from-amber-500 to-orange-500',
+                icon: Heart,
+                iconBg: 'bg-amber-50',
+                iconColor: 'text-amber-600',
+                title: 'Blessings of Owning Land in the Holy City',
+                desc: 'Own a piece of sacred land in Lord Krishna\'s divine abode. Experience spiritual fulfillment alongside financial prosperity—a rare investment that nourishes both soul and wealth.',
+                badge: 'Divine Value',
+                badgeColor: 'bg-amber-100 text-amber-700'
+              },
+            ].map(({ gradient, icon: Icon, iconBg, iconColor, title, desc, badge, badgeColor }) => (
+              <div key={title} className="group relative">
+                {/* Gradient border effect */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${gradient} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl`}></div>
+                
+                {/* Card */}
+                <div className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 group-hover:border-transparent h-full">
+                  {/* Badge */}
+                  <span className={`inline-block px-3 py-1 ${badgeColor} text-xs font-bold rounded-full mb-4`}>
+                    {badge}
+                  </span>
+                  
+                  {/* Icon */}
+                  <div className={`w-16 h-16 ${iconBg} rounded-2xl flex items-center justify-center mb-6 transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
+                    <Icon className={`w-8 h-8 ${iconColor}`} />
+                  </div>
+                  
+                  {/* Content */}
+                  <h3 className="text-xl font-heading font-bold text-gray-900 mb-4 leading-tight">
+                    {title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {desc}
+                  </p>
+                  
+                  {/* Hover arrow */}
+                  <div className="mt-6 flex items-center text-saffron-600 font-semibold text-sm opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                    Learn More <ArrowRight className="w-4 h-4 ml-2 animate-pulse" />
+                  </div>
                 </div>
-                <h3 className="text-xl font-heading font-bold text-gray-900 mb-3">{title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>
               </div>
             ))}
+          </div>
+
+          {/* Bottom Stats Bar */}
+          <div className="mt-16 bg-gradient-to-r from-saffron-500 via-temple-600 to-saffron-500 rounded-2xl p-8 shadow-2xl">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { number: '25-40%', label: 'Annual Appreciation', icon: TrendingUp },
+                { number: '50L+', label: 'Annual Tourists', icon: Users },
+                { number: '150 km', label: 'From Delhi NCR', icon: MapPin },
+                { number: '5x', label: 'Growth in 5 Years', icon: BarChart3 },
+              ].map(({ number, label, icon: StatIcon }) => (
+                <div key={label} className="text-center text-white">
+                  <StatIcon className="w-6 h-6 mx-auto mb-2 opacity-80" />
+                  <div className="text-3xl md:text-4xl font-bold mb-1">{number}</div>
+                  <div className="text-xs md:text-sm text-saffron-100 font-medium">{label}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

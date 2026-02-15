@@ -204,28 +204,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Bottom CTA */}
-      <section className="py-16 bg-gradient-to-r from-saffron-500 to-temple-600 text-white text-center">
-        <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-3xl font-heading font-bold mb-3">Don't Wait — Start Today</h2>
-          <p className="text-saffron-100 mb-6">{TAGLINE}</p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href={`tel:${PHONE_NUMBER}`} className="btn-primary bg-white text-saffron-600 hover:bg-gray-100">
-              <Phone className="w-4 h-4 mr-2" />
-              Call Now
-            </a>
-            <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi, I want to know about plots in Vrindavan.`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-whatsapp"
-            >
-              <MessageCircle className="w-4 h-4 mr-2" />
-              Chat on WhatsApp
-            </a>
-          </div>
-        </div>
-      </section>
+
     </div>
   );
 }

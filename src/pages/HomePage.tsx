@@ -1,68 +1,171 @@
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import {
   Phone, MapPin, Download, ArrowRight, Shield, FileCheck, TrendingUp, CreditCard, Building2, Star,
-  CheckCircle2, ChevronRight,
+  CheckCircle2, ChevronRight, ChevronLeft,
 } from 'lucide-react';
 import { projects, testimonials, PHONE_NUMBER, WHATSAPP_NUMBER, TAGLINE } from '../data/siteData';
 
+const heroSlides = [
+  {
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=90',
+    title: 'Own Your Dream Plot in the',
+    highlight: 'Divine City of Vrindavan',
+    subtitle: 'MVDA Approved | Prime Locations | High Return Potential'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=90',
+    title: 'Premium Residential Plots Near',
+    highlight: 'Bankey Bihari & Prem Mandir',
+    subtitle: 'Secure Your Future in the Holy Land'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1920&q=90',
+    title: 'Invest in Vrindavan\'s',
+    highlight: 'Fastest Growing Property Market',
+    subtitle: '25-40% Annual Appreciation | 100% Legal & Approved'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=90',
+    title: 'Modern Amenities in the',
+    highlight: 'Sacred Heart of Braj',
+    subtitle: 'Wide Roads | Green Spaces | Temple Connectivity'
+  }
+];
+
 export default function HomePage() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    setIsAutoPlaying(false);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+    setIsAutoPlaying(false);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+    setIsAutoPlaying(false);
+  };
+
   return (
     <div>
-      {/* Hero Section */}
+      {/* Enhanced Hero Section with Slider */}
       <section className="relative min-h-[100vh] flex items-center pt-28 pb-16 overflow-hidden">
+        {/* Background Slider */}
         <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80"
-            alt="Vrindavan property"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
+          {heroSlides.map((slide, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentSlide ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <img
+                src={slide.image}
+                alt={slide.title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+            </div>
+          ))}
         </div>
 
+        {/* Navigation Arrows */}
+        <button
+          onClick={prevSlide}
+          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-all group"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft className="w-6 h-6 md:w-7 md:h-7 text-white group-hover:scale-110 transition-transform" />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-all group"
+          aria-label="Next slide"
+        >
+          <ChevronRight className="w-6 h-6 md:w-7 md:h-7 text-white group-hover:scale-110 transition-transform" />
+        </button>
+
+        {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 w-full">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 bg-saffron-500/20 border border-saffron-400/30 rounded-full px-4 py-2 mb-6 animate-fade-in-up">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 bg-saffron-500/20 border border-saffron-400/30 rounded-full px-5 py-2.5 mb-6 backdrop-blur-sm animate-fade-in-up">
               <span className="w-2 h-2 bg-saffron-400 rounded-full animate-pulse" />
-              <span className="text-saffron-200 text-sm font-medium">MVDA Approved Projects</span>
+              <span className="text-saffron-200 text-sm font-semibold tracking-wide">MVDA APPROVED PROJECTS</span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white leading-tight mb-6 animate-fade-in-up animate-delay-200">
-              Own Your Dream Plot in the
-              <span className="text-saffron-400"> Divine City of Vrindavan</span>
+            {/* Dynamic Heading based on current slide */}
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-white leading-tight mb-6 animate-fade-in-up animate-delay-200">
+              {heroSlides[currentSlide].title}
+              <span className="text-saffron-400 block mt-2">{heroSlides[currentSlide].highlight}</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-200 mb-4 animate-fade-in-up animate-delay-400">
-              MVDA Approved | Prime Locations | High Return Potential
+            <p className="text-xl md:text-2xl text-gray-100 mb-4 animate-fade-in-up animate-delay-400 font-medium">
+              {heroSlides[currentSlide].subtitle}
             </p>
-            <p className="text-saffron-300 font-semibold text-lg mb-8 animate-fade-in-up animate-delay-400">
-              ✨ {TAGLINE}
+            <p className="text-saffron-300 font-bold text-xl mb-10 animate-fade-in-up animate-delay-400 flex items-center gap-2">
+              <span className="text-2xl">✨</span> {TAGLINE}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up animate-delay-600">
-              <Link to="/contact" className="btn-primary text-lg px-8 py-4">
-                <MapPin className="w-5 h-5 mr-2" />
-                Book Site Visit
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap items-center justify-center gap-3 mb-12 animate-fade-in-up animate-delay-600">
+              <Link to="/contact" className="group relative px-6 py-2.5 bg-white text-saffron-600 font-semibold text-sm rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2 overflow-hidden">
+                <span className="absolute inset-0 bg-gradient-to-r from-saffron-400 to-temple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                <MapPin className="w-4 h-4 relative z-10 group-hover:text-white transition-colors" />
+                <span className="relative z-10 group-hover:text-white transition-colors">Book Site Visit</span>
               </Link>
-              <button className="btn-secondary border-white text-white hover:bg-white/10 text-lg px-8 py-4">
-                <Download className="w-5 h-5 mr-2" />
-                Download Brochure
+              <button className="group relative px-6 py-2.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold text-sm rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2">
+                <Download className="w-4 h-4 animate-bounce" />
+                <span>Download Brochure</span>
               </button>
-              <a href={`tel:${PHONE_NUMBER}`} className="btn-primary bg-green-500 hover:bg-green-600 text-lg px-8 py-4">
-                <Phone className="w-5 h-5 mr-2" />
-                Call Now
+              <a href={`tel:${PHONE_NUMBER}`} className="group relative px-6 py-2.5 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold text-sm rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2">
+                <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-700 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <Phone className="w-4 h-4 relative z-10 animate-pulse" />
+                <span className="relative z-10">Call Now</span>
               </a>
             </div>
 
             {/* Trust badges */}
-            <div className="flex flex-wrap gap-4 mt-10 animate-fade-in-up animate-delay-600">
+            <div className="flex flex-wrap gap-4 animate-fade-in-up animate-delay-600">
               {['MVDA Approved', '100+ Happy Families', '4 Premium Projects'].map((badge) => (
-                <div key={badge} className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2">
-                  <CheckCircle2 className="w-4 h-4 text-green-400" />
-                  <span className="text-white text-sm font-medium">{badge}</span>
+                <div key={badge} className="flex items-center gap-2 bg-white/15 backdrop-blur-md rounded-xl px-5 py-3 border border-white/20 hover:bg-white/25 transition-all">
+                  <CheckCircle2 className="w-5 h-5 text-green-400" />
+                  <span className="text-white text-sm font-semibold">{badge}</span>
                 </div>
               ))}
             </div>
           </div>
+        </div>
+
+        {/* Slide Indicators */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+          {heroSlides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`transition-all ${
+                index === currentSlide
+                  ? 'w-12 h-3 bg-saffron-400'
+                  : 'w-3 h-3 bg-white/40 hover:bg-white/60'
+              } rounded-full`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
       </section>
 
@@ -246,38 +349,6 @@ export default function HomePage() {
             <Link to="/testimonials" className="btn-secondary">
               View All Testimonials <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Strong CTA Strip */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80"
-            alt="CTA background"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-saffron-600/90 to-temple-700/90" />
-        </div>
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
-            Plan Your Visit to Vrindavan Today
-          </h2>
-          <p className="text-saffron-100 text-lg mb-8">{TAGLINE}</p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/contact" className="btn-primary bg-white text-saffron-600 hover:bg-gray-100 text-lg px-8 py-4">
-              <MapPin className="w-5 h-5 mr-2" />
-              Book Free Site Visit
-            </Link>
-            <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi, I want to plan a site visit to Vrindavan.`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-whatsapp text-lg px-8 py-4"
-            >
-              Chat on WhatsApp
-            </a>
           </div>
         </div>
       </section>
