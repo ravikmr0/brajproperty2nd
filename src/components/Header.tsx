@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, Search } from 'lucide-react';
 import { PHONE_NUMBER, TAGLINE } from '../data/siteData';
 
 const navLinks = [
@@ -16,6 +16,7 @@ const navLinks = [
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const location = useLocation();
 
   useEffect(() => {
@@ -32,11 +33,6 @@ export default function Header() {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-white/90 backdrop-blur-sm'
     }`}>
-      {/* Top bar */}
-      <div className="bg-gradient-to-r from-saffron-600 to-temple-500 text-white text-center py-1.5 text-xs md:text-sm font-medium tracking-wide">
-        ✨ {TAGLINE} ✨
-      </div>
-
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
@@ -51,6 +47,20 @@ export default function Header() {
               <p className="text-[10px] text-gray-500 -mt-0.5">Your Gateway to Vrindavan</p>
             </div>
           </Link>
+
+          {/* Search Bar */}
+          <div className="hidden md:flex items-center flex-1 max-w-xs mx-4">
+            <div className="relative w-full">
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full px-4 py-2 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-saffron-500 focus:border-transparent text-sm"
+              />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+            </div>
+          </div>
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-1">
@@ -71,13 +81,6 @@ export default function Header() {
 
           {/* CTA + Mobile Toggle */}
           <div className="flex items-center gap-3">
-            <a
-              href={`tel:${PHONE_NUMBER}`}
-              className="hidden md:flex items-center gap-2 btn-primary text-sm py-2.5"
-            >
-              <Phone className="w-4 h-4" />
-              Call Now
-            </a>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
@@ -107,13 +110,6 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-          <a
-            href={`tel:${PHONE_NUMBER}`}
-            className="flex items-center justify-center gap-2 btn-primary w-full mt-3"
-          >
-            <Phone className="w-4 h-4" />
-            Call Now
-          </a>
         </div>
       </div>
     </header>
