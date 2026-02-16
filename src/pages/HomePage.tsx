@@ -297,10 +297,10 @@ export default function HomePage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { name: 'Bankey Bihari Temple', distance: '2-5 km', img: 'https://images.unsplash.com/photo-1548013146-72479768bada?w=400&q=80' },
-              { name: 'Prem Mandir', distance: '3-6 km', img: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400&q=80' },
-              { name: 'ISKCON Temple', distance: '2-4 km', img: 'https://images.unsplash.com/photo-1591018653407-b78cf89e4e5e?w=400&q=80' },
-              { name: 'Chandrodaya Temple', distance: '4-7 km', img: 'https://images.unsplash.com/photo-1604928141064-207cea6f571f?w=400&q=80' },
+              { name: 'Bankey Bihari Temple', distance: '2-5 km', img: 'https://www.bihariji.org/assets/img/biharijiTemple.jpeg' },
+              { name: 'Prem Mandir', distance: '3-6 km', img: 'https://www.tusktravel.com/blog/wp-content/uploads/2024/05/Prem-Mandir.jpg' },
+              { name: 'ISKCON Temple', distance: '2-4 km', img: 'https://cdn.iskconvrindavan.com/page/about-us_6267ee89e0f375f.jpeg' },
+              { name: 'Chandrodaya Temple', distance: '4-7 km', img: 'https://www.tusktravel.com/blog/wp-content/uploads/2024/05/Prem-Mandir.jpg' },
             ].map((temple) => (
               <div key={temple.name} className="card group cursor-pointer">
                 <div className="relative h-48 overflow-hidden">
