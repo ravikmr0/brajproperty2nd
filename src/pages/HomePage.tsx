@@ -4,7 +4,9 @@ import {
   Phone, MapPin, Download, ArrowRight, Shield, FileCheck, TrendingUp, CreditCard, Building2, Star,
   CheckCircle2, ChevronRight, ChevronLeft,
 } from 'lucide-react';
-import { projects, testimonials, PHONE_NUMBER, WHATSAPP_NUMBER, TAGLINE } from '../data/siteData';
+import { projects, testimonials, PHONE_NUMBER, TAGLINE } from '@/data/siteData';
+import LocationSlider from '@/components/LocationSlider';
+import QuotePopup from '@/components/QuotePopup';
 
 const heroSlides = [
   {
@@ -36,6 +38,8 @@ const heroSlides = [
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isQuotePopupOpen, setIsQuotePopupOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<string>('');
 
   useEffect(() => {
     if (!isAutoPlaying) return;
@@ -119,23 +123,23 @@ export default function HomePage() {
               {heroSlides[currentSlide].subtitle}
             </p>
             <p className="text-saffron-300 font-bold text-xl mb-10 animate-fade-in-up animate-delay-400 flex items-center gap-2">
-              <span className="text-2xl">✨</span> {TAGLINE}
+              <span className="text-2xl" aria-hidden>✨</span> {TAGLINE}
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center justify-center gap-3 mb-12 animate-fade-in-up animate-delay-600">
-              <Link to="/contact" className="group relative px-6 py-2.5 bg-white text-saffron-600 font-semibold text-sm rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2 overflow-hidden">
+            <div className="flex flex-wrap items-center justify-center gap-2 mb-12 animate-fade-in-up animate-delay-600">
+              <Link to="/contact" className="group relative px-4 py-2 bg-white text-saffron-600 font-semibold text-xs rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2 overflow-hidden">
                 <span className="absolute inset-0 bg-gradient-to-r from-saffron-400 to-temple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                <MapPin className="w-4 h-4 relative z-10 group-hover:text-white transition-colors" />
+                <MapPin className="w-3 h-3 relative z-10 group-hover:text-white transition-colors" />
                 <span className="relative z-10 group-hover:text-white transition-colors">Book Site Visit</span>
               </Link>
-              <button className="group relative px-6 py-2.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold text-sm rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2">
-                <Download className="w-4 h-4 animate-bounce" />
+              <button className="group relative px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold text-xs rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2">
+                <Download className="w-3 h-3 animate-bounce" />
                 <span>Download Brochure</span>
               </button>
-              <a href={`tel:${PHONE_NUMBER}`} className="group relative px-6 py-2.5 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold text-sm rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2">
+              <a href={`tel:${PHONE_NUMBER}`} className="group relative px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold text-xs rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2">
                 <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-700 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <Phone className="w-4 h-4 relative z-10 animate-pulse" />
+                <Phone className="w-3 h-3 relative z-10 animate-pulse" />
                 <span className="relative z-10">Call Now</span>
               </a>
             </div>
@@ -184,8 +188,8 @@ export default function HomePage() {
                 With MVDA-approved projects in prime locations near the holiest temples, we help families
                 and investors secure their future in the divine city of Lord Krishna.
               </p>
-              <Link to="/about" className="btn-primary">
-                Know More <ArrowRight className="w-4 h-4 ml-2" />
+              <Link to="/projects" className="btn-primary">
+                Explore Projects <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </div>
             <div className="relative">
@@ -214,38 +218,52 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project) => (
-              <Link key={project.id} to={`/projects/${project.slug}`} className="card group">
-                <div className="relative overflow-hidden h-56">
-                  <img
-                    src={project.image}
-                    alt={project.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute top-4 left-4 flex gap-2">
-                    <span className={`${project.statusColor} text-white text-xs font-bold px-3 py-1 rounded-full`}>
-                      {project.status}
-                    </span>
-                    <span className="bg-white/90 text-gray-800 text-xs font-bold px-3 py-1 rounded-full">
-                      {project.type}
-                    </span>
+              <div key={project.id} className="card group">
+                <Link to={`/projects/${project.slug}`} className="block">
+                  <div className="relative overflow-hidden h-56">
+                    <img
+                      src={project.image}
+                      alt={project.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute top-4 left-4 flex gap-2">
+                      <span className={`${project.statusColor} text-white text-xs font-bold px-3 py-1 rounded-full`}>
+                        {project.status}
+                      </span>
+                      <span className="bg-white/90 text-gray-800 text-xs font-bold px-3 py-1 rounded-full">
+                        {project.type}
+                      </span>
+                    </div>
                   </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-heading font-bold text-gray-900 mb-2 group-hover:text-saffron-600 transition-colors">
+                      {project.name}
+                    </h3>
+                    <div className="flex items-center gap-2 text-gray-500 text-sm mb-3">
+                      <MapPin className="w-4 h-4 text-saffron-500" />
+                      {project.location}
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-gray-500">Road: {project.road}</span>
+                      <span className="text-saffron-600 font-semibold text-sm flex items-center gap-1">
+                        View Details <ChevronRight className="w-4 h-4" />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+                <div className="px-6 pb-6">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setSelectedProject(project.name);
+                      setIsQuotePopupOpen(true);
+                    }}
+                    className="w-full btn-primary text-center"
+                  >
+                    Get Quote
+                  </button>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-heading font-bold text-gray-900 mb-2 group-hover:text-saffron-600 transition-colors">
-                    {project.name}
-                  </h3>
-                  <div className="flex items-center gap-2 text-gray-500 text-sm mb-3">
-                    <MapPin className="w-4 h-4 text-saffron-500" />
-                    {project.location}
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-500">Road: {project.road}</span>
-                    <span className="text-saffron-600 font-semibold text-sm flex items-center gap-1">
-                      View Details <ChevronRight className="w-4 h-4" />
-                    </span>
-                  </div>
-                </div>
-              </Link>
+              </div>
             ))}
           </div>
 
@@ -295,25 +313,7 @@ export default function HomePage() {
             <p className="section-subtitle">Our projects are strategically located near Vrindavan's most revered temples</p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { name: 'Bankey Bihari Temple', distance: '2-5 km', img: 'https://www.bihariji.org/assets/img/biharijiTemple.jpeg' },
-              { name: 'Prem Mandir', distance: '3-6 km', img: 'https://www.tusktravel.com/blog/wp-content/uploads/2024/05/Prem-Mandir.jpg' },
-              { name: 'ISKCON Temple', distance: '2-4 km', img: 'https://cdn.iskconvrindavan.com/page/about-us_6267ee89e0f375f.jpeg' },
-              { name: 'Chandrodaya Temple', distance: '4-7 km', img: 'https://www.tusktravel.com/blog/wp-content/uploads/2024/05/Prem-Mandir.jpg' },
-            ].map((temple) => (
-              <div key={temple.name} className="card group cursor-pointer">
-                <div className="relative h-48 overflow-hidden">
-                  <img src={temple.img} alt={temple.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h4 className="text-white font-semibold text-lg">{temple.name}</h4>
-                    <p className="text-saffron-300 text-sm">{temple.distance} from projects</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <LocationSlider />
         </div>
       </section>
 
@@ -352,6 +352,13 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Quote Popup */}
+      <QuotePopup
+        isOpen={isQuotePopupOpen}
+        onClose={() => setIsQuotePopupOpen(false)}
+        projectName={selectedProject}
+      />
     </div>
   );
 }
