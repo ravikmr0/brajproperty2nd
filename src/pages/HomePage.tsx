@@ -4,9 +4,9 @@ import {
   Phone, MapPin, Download, ArrowRight, Shield, FileCheck, TrendingUp, CreditCard, Building2, Star,
   CheckCircle2, ChevronRight, ChevronLeft,
 } from 'lucide-react';
-import { projects, testimonials, PHONE_NUMBER, TAGLINE } from '@/data/siteData';
+import { testimonials, PHONE_NUMBER, TAGLINE } from '@/data/siteData';
 import LocationSlider from '@/components/LocationSlider';
-import QuotePopup from '@/components/QuotePopup';
+import ProjectsSlider from '@/components/ProjectsSlider';
 
 const heroSlides = [
   {
@@ -38,8 +38,6 @@ const heroSlides = [
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [isQuotePopupOpen, setIsQuotePopupOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<string>('');
 
   useEffect(() => {
     if (!isAutoPlaying) return;
@@ -69,7 +67,7 @@ export default function HomePage() {
   return (
     <div>
       {/* Enhanced Hero Section with Slider */}
-      <section className="relative min-h-[100vh] flex items-center pt-28 pb-16 overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center pt-24 pb-10 overflow-hidden">
         {/* Background Slider */}
         <div className="absolute inset-0">
           {heroSlides.map((slide, index) => (
@@ -122,12 +120,12 @@ export default function HomePage() {
             <p className="text-xl md:text-2xl text-gray-100 mb-4 animate-fade-in-up animate-delay-400 font-medium">
               {heroSlides[currentSlide].subtitle}
             </p>
-            <p className="text-saffron-300 font-bold text-xl mb-10 animate-fade-in-up animate-delay-400 flex items-center gap-2">
+            <p className="text-saffron-300 font-bold text-xl mb-6 animate-fade-in-up animate-delay-400 flex items-center gap-2">
               <span className="text-2xl" aria-hidden>✨</span> {TAGLINE}
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center justify-center gap-2 mb-12 animate-fade-in-up animate-delay-600">
+            <div className="flex flex-wrap items-center justify-center gap-2 mb-8 animate-fade-in-up animate-delay-600">
               <Link to="/contact" className="group relative px-4 py-2 bg-white text-saffron-600 font-semibold text-xs rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2 overflow-hidden">
                 <span className="absolute inset-0 bg-gradient-to-r from-saffron-400 to-temple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 <MapPin className="w-3 h-3 relative z-10 group-hover:text-white transition-colors" />
@@ -174,9 +172,9 @@ export default function HomePage() {
       </section>
 
       {/* About Snapshot */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-white to-saffron-50/30">
+      <section className="py-10 md:py-14 bg-gradient-to-b from-white to-saffron-50/30">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div>
               <span className="text-saffron-500 font-semibold text-sm uppercase tracking-wider">About BrajProperty</span>
               <h2 className="section-title mt-2">Building Trust, One Plot at a Time</h2>
@@ -208,66 +206,17 @@ export default function HomePage() {
       </section>
 
       {/* Featured Projects */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-10 md:py-14 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <span className="text-saffron-500 font-semibold text-sm uppercase tracking-wider">Our Projects</span>
-            <h2 className="section-title mt-2">Featured Projects</h2>
-            <p className="section-subtitle">Explore MVDA-approved residential and commercial plots in Vrindavan</p>
+            <h2 className="section-title mt-2">Premium Residences</h2>
+            <p className="section-subtitle">Discover our curated portfolio of luxury living spaces, designed for those who appreciate the finest things in life.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {projects.map((project) => (
-              <div key={project.id} className="card group">
-                <Link to={`/projects/${project.slug}`} className="block">
-                  <div className="relative overflow-hidden h-56">
-                    <img
-                      src={project.image}
-                      alt={project.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute top-4 left-4 flex gap-2">
-                      <span className={`${project.statusColor} text-white text-xs font-bold px-3 py-1 rounded-full`}>
-                        {project.status}
-                      </span>
-                      <span className="bg-white/90 text-gray-800 text-xs font-bold px-3 py-1 rounded-full">
-                        {project.type}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-heading font-bold text-gray-900 mb-2 group-hover:text-saffron-600 transition-colors">
-                      {project.name}
-                    </h3>
-                    <div className="flex items-center gap-2 text-gray-500 text-sm mb-3">
-                      <MapPin className="w-4 h-4 text-saffron-500" />
-                      {project.location}
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-500">Road: {project.road}</span>
-                      <span className="text-saffron-600 font-semibold text-sm flex items-center gap-1">
-                        View Details <ChevronRight className="w-4 h-4" />
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-                <div className="px-6 pb-6">
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setSelectedProject(project.name);
-                      setIsQuotePopupOpen(true);
-                    }}
-                    className="w-full btn-primary text-center"
-                  >
-                    Get Quote
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ProjectsSlider />
 
-          <div className="text-center mt-10">
+          <div className="text-center mt-8">
             <Link to="/projects" className="btn-primary">
               View All Projects <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
@@ -276,14 +225,14 @@ export default function HomePage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-saffron-50/50 to-white">
+      <section className="py-10 md:py-14 bg-gradient-to-b from-saffron-50/50 to-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <span className="text-saffron-500 font-semibold text-sm uppercase tracking-wider">Why Choose Us</span>
             <h2 className="section-title mt-2">Your Trusted Property Partner</h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
               { icon: Shield, title: 'MVDA Approved', desc: 'All projects are officially approved by Mathura-Vrindavan Development Authority.' },
               { icon: Building2, title: 'Prime Temple Connectivity', desc: 'Plots near Bankey Bihari, Prem Mandir, ISKCON & Chandrodaya temples.' },
@@ -305,9 +254,9 @@ export default function HomePage() {
       </section>
 
       {/* Property Highlights */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-10 md:py-14 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <span className="text-saffron-500 font-semibold text-sm uppercase tracking-wider">Location Advantage</span>
             <h2 className="section-title mt-2">Near Holy Landmarks</h2>
             <p className="section-subtitle">Our projects are strategically located near Vrindavan's most revered temples</p>
@@ -318,14 +267,14 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials Preview */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-temple-50/30 to-white">
+      <section className="py-10 md:py-14 bg-gradient-to-b from-temple-50/30 to-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <span className="text-saffron-500 font-semibold text-sm uppercase tracking-wider">Testimonials</span>
             <h2 className="section-title mt-2">What Our Customers Say</h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-5">
             {testimonials.slice(0, 3).map((t) => (
               <div key={t.id} className="bg-white rounded-xl p-6 shadow-md border border-gray-100">
                 <div className="flex items-center gap-1 mb-4">
@@ -345,20 +294,13 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="text-center mt-10">
+          <div className="text-center mt-8">
             <Link to="/testimonials" className="btn-secondary">
               View All Testimonials <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
           </div>
         </div>
       </section>
-
-      {/* Quote Popup */}
-      <QuotePopup
-        isOpen={isQuotePopupOpen}
-        onClose={() => setIsQuotePopupOpen(false)}
-        projectName={selectedProject}
-      />
     </div>
   );
 }

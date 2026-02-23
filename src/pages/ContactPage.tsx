@@ -13,7 +13,7 @@ export default function ContactPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-saffron-50 via-white to-temple-50">
+      <section className="relative pt-28 pb-10 bg-gradient-to-br from-saffron-50 via-white to-temple-50">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <span className="text-saffron-500 font-semibold text-sm uppercase tracking-wider">Contact Us</span>
           <h1 className="section-title mt-2 text-4xl md:text-5xl">
@@ -24,9 +24,9 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 md:py-24">
+      <section className="py-10 md:py-14">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-5 gap-12">
+          <div className="grid lg:grid-cols-5 gap-8">
             {/* Contact Info */}
             <div className="lg:col-span-2">
               <h2 className="text-2xl font-heading font-bold text-gray-900 mb-6">Let's Connect</h2>

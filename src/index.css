@@ -22,7 +22,7 @@
     @apply inline-flex items-center justify-center px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl;
   }
   .section-title {
-    @apply text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-4;
+    @apply text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-3;
   }
   .section-subtitle {
     @apply text-lg text-gray-600 max-w-2xl mx-auto;

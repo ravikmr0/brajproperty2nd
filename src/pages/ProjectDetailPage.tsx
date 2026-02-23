@@ -11,7 +11,7 @@ export default function ProjectDetailPage() {
 
   if (!project) {
     return (
-      <div className="pt-32 pb-20 text-center">
+      <div className="pt-28 pb-10 text-center">
         <h1 className="text-2xl font-bold text-gray-900 mb-4">Project Not Found</h1>
         <Link to="/projects" className="btn-primary">
           <ArrowLeft className="w-4 h-4 mr-2" />
@@ -29,7 +29,7 @@ export default function ProjectDetailPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative pt-28 pb-0">
+      <section className="relative pt-24 pb-0">
         <div className="max-w-7xl mx-auto px-4">
           <Link to="/projects" className="inline-flex items-center gap-2 text-saffron-600 font-medium text-sm mb-6 hover:gap-3 transition-all">
             <ArrowLeft className="w-4 h-4" />
@@ -131,7 +131,7 @@ export default function ProjectDetailPage() {
       </section>
 
       {/* Enquiry Form */}
-      <section className="py-16 md:py-24">
+      <section className="py-10 md:py-14">
         <div className="max-w-2xl mx-auto px-4">
           <div className="bg-gradient-to-br from-saffron-50 to-temple-50 rounded-2xl p-8 shadow-lg">
             <h3 className="text-2xl font-heading font-bold text-gray-900 mb-2 text-center">Enquire About {project.name}</h3>

@@ -6,7 +6,7 @@ export default function TestimonialsPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-saffron-50 via-white to-temple-50">
+      <section className="relative pt-28 pb-10 bg-gradient-to-br from-saffron-50 via-white to-temple-50">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <span className="text-saffron-500 font-semibold text-sm uppercase tracking-wider">Testimonials</span>
           <h1 className="section-title mt-2 text-4xl md:text-5xl">
@@ -17,10 +17,10 @@ export default function TestimonialsPage() {
       </section>
 
       {/* Testimonials Grid */}
-      <section className="py-16 md:py-24">
+      <section className="py-10 md:py-14">
         <div className="max-w-7xl mx-auto px-4">
           {/* Stats */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
             {[
               { number: '100+', label: 'Happy Families' },
               { number: '4.9/5', label: 'Customer Rating' },
@@ -62,9 +62,9 @@ export default function TestimonialsPage() {
       </section>
 
       {/* Video Testimonials Placeholder */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-saffron-50/30 to-white">
+      <section className="py-10 md:py-14 bg-gradient-to-b from-saffron-50/30 to-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <span className="text-saffron-500 font-semibold text-sm uppercase tracking-wider">Video Reviews</span>
             <h2 className="section-title mt-2">Watch Customer Stories</h2>
           </div>
