@@ -1,13 +1,47 @@
 import { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, CheckCircle2, Navigation } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, CheckCircle2, Navigation, Loader2 } from 'lucide-react';
 import { PHONE_NUMBER, EMAIL, ADDRESS, WHATSAPP_NUMBER, TAGLINE } from '../data/siteData';
 
 export default function ContactPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    setIsSubmitting(true);
+    setError('');
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name'),
+      phone: formData.get('phone'),
+      email: formData.get('email'),
+      interestedIn: formData.get('interestedIn'),
+      message: formData.get('message'),
+      formType: 'contact',
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      setFormSubmitted(true);
+    } catch (err) {
+      setError('Failed to send message. Please try calling us instead.');
+      console.error('Form submission error:', err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -131,23 +165,32 @@ export default function ContactPage() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
+                    {error && (
+                      <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+                        {error}
+                      </div>
+                    )}
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
                         <input
                           type="text"
+                          name="name"
                           placeholder="Enter your name"
                           required
-                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-saffron-400 focus:border-transparent outline-none"
+                          disabled={isSubmitting}
+                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-saffron-400 focus:border-transparent outline-none disabled:bg-gray-50 disabled:cursor-not-allowed"
                         />
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number *</label>
                         <input
                           type="tel"
+                          name="phone"
                           placeholder="Enter phone number"
                           required
-                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-saffron-400 focus:border-transparent outline-none"
+                          disabled={isSubmitting}
+                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-saffron-400 focus:border-transparent outline-none disabled:bg-gray-50 disabled:cursor-not-allowed"
                         />
                       </div>
                     </div>
@@ -155,13 +198,19 @@ export default function ContactPage() {
                       <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
                       <input
                         type="email"
+                        name="email"
                         placeholder="Enter email (optional)"
-                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-saffron-400 focus:border-transparent outline-none"
+                        disabled={isSubmitting}
+                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-saffron-400 focus:border-transparent outline-none disabled:bg-gray-50 disabled:cursor-not-allowed"
                       />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Interested In</label>
-                      <select className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-saffron-400 focus:border-transparent outline-none text-gray-600">
+                      <select 
+                        name="interestedIn"
+                        disabled={isSubmitting}
+                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-saffron-400 focus:border-transparent outline-none text-gray-600 disabled:bg-gray-50 disabled:cursor-not-allowed"
+                      >
                         <option value="">Select a project</option>
                         <option value="krishna-gaur-city">Krishna Gaur City</option>
                         <option value="bankey-bihari-kunj">Bankey Bihari Kunj</option>
@@ -173,13 +222,26 @@ export default function ContactPage() {
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
                       <textarea
+                        name="message"
                         rows={4}
                         placeholder="Tell us what you're looking for..."
-                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-saffron-400 focus:border-transparent outline-none resize-none"
+                        disabled={isSubmitting}
+                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-saffron-400 focus:border-transparent outline-none resize-none disabled:bg-gray-50 disabled:cursor-not-allowed"
                       />
                     </div>
-                    <button type="submit" className="btn-primary w-full justify-center text-lg py-4">
-                      Submit Enquiry
+                    <button 
+                      type="submit" 
+                      disabled={isSubmitting}
+                      className="btn-primary w-full justify-center text-lg py-4 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                          Sending...
+                        </>
+                      ) : (
+                        'Submit Enquiry'
+                      )}
                     </button>
                     <p className="text-center text-xs text-gray-400">
                       By submitting, you agree to be contacted by our team. Your information is safe with us.

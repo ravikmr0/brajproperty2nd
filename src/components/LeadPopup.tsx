@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
-import { X, Download } from 'lucide-react';
+import { X, Download, Loader2 } from 'lucide-react';
 import { PHONE_NUMBER } from '../data/siteData';
 
 export default function LeadPopup() {
   const [isVisible, setIsVisible] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -21,12 +23,43 @@ export default function LeadPopup() {
     sessionStorage.setItem('leadPopupDismissed', 'true');
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      handleClose();
-    }, 3000);
+    setIsSubmitting(true);
+    setError('');
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name'),
+      phone: formData.get('phone'),
+      email: formData.get('email'),
+      formType: 'brochure',
+      interestedIn: 'Brochure Download',
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send request');
+      }
+
+      setSubmitted(true);
+      setTimeout(() => {
+        handleClose();
+      }, 3000);
+    } catch (err) {
+      setError('Failed to send request. Please try calling us instead.');
+      console.error('Form submission error:', err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (!isVisible) return null;
@@ -61,25 +94,47 @@ export default function LeadPopup() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-3">
+              {error && (
+                <div className="bg-red-50 border border-red-200 text-red-700 px-3 py-2 rounded-lg text-xs">
+                  {error}
+                </div>
+              )}
               <input
                 type="text"
+                name="name"
                 placeholder="Your Name"
                 required
-                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-saffron-400 focus:border-transparent outline-none text-sm"
+                disabled={isSubmitting}
+                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-saffron-400 focus:border-transparent outline-none text-sm disabled:bg-gray-50 disabled:cursor-not-allowed"
               />
               <input
                 type="tel"
+                name="phone"
                 placeholder="Phone Number"
                 required
-                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-saffron-400 focus:border-transparent outline-none text-sm"
+                disabled={isSubmitting}
+                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-saffron-400 focus:border-transparent outline-none text-sm disabled:bg-gray-50 disabled:cursor-not-allowed"
               />
               <input
                 type="email"
+                name="email"
                 placeholder="Email (Optional)"
-                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-saffron-400 focus:border-transparent outline-none text-sm"
+                disabled={isSubmitting}
+                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-saffron-400 focus:border-transparent outline-none text-sm disabled:bg-gray-50 disabled:cursor-not-allowed"
               />
-              <button type="submit" className="btn-primary w-full">
-                Download Brochure
+              <button 
+                type="submit" 
+                disabled={isSubmitting}
+                className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  'Download Brochure'
+                )}
               </button>
               <p className="text-center text-xs text-gray-400">
                 Or call us at <a href={`tel:${PHONE_NUMBER}`} className="text-saffron-500 font-medium">{PHONE_NUMBER}</a>
