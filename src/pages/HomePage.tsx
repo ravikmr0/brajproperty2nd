@@ -112,34 +112,37 @@ export default function HomePage() {
             </div>
 
             {/* Dynamic Heading based on current slide */}
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-white leading-tight mb-6 animate-fade-in-up animate-delay-200">
+            <h1 className="text-2xl md:text-[34px] lg:text-[46px] font-heading font-semibold text-white mb-5 animate-fade-in-up animate-delay-200" style={{ lineHeight: '1.25', letterSpacing: '0.5px' }}>
               {heroSlides[currentSlide].title}
               <span className="text-saffron-400 block mt-2">{heroSlides[currentSlide].highlight}</span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-gray-100 mb-4 animate-fade-in-up animate-delay-400 font-medium">
-              {heroSlides[currentSlide].subtitle}
-            </p>
-            <p className="text-saffron-300 font-bold text-xl mb-6 animate-fade-in-up animate-delay-400 flex items-center gap-2">
-              <span className="text-2xl" aria-hidden>✨</span> {TAGLINE}
-            </p>
+            <div className="max-w-[60%]">
+              <p className="text-[15px] md:text-[17px] text-gray-100 mb-3 animate-fade-in-up animate-delay-400" style={{ lineHeight: '1.6' }}>
+                {heroSlides[currentSlide].subtitle}
+              </p>
+              <p className="text-saffron-300 font-semibold text-[15px] md:text-[17px] mb-6 animate-fade-in-up animate-delay-400 flex items-center gap-2">
+                <span className="text-base" aria-hidden>✨</span> {TAGLINE}
+              </p>
+            </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center justify-center gap-2 mb-8 animate-fade-in-up animate-delay-600">
-              <Link to="/contact" className="group relative px-4 py-2 bg-white text-saffron-600 font-semibold text-xs rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2 overflow-hidden">
-                <span className="absolute inset-0 bg-gradient-to-r from-saffron-400 to-temple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                <MapPin className="w-3 h-3 relative z-10 group-hover:text-white transition-colors" />
-                <span className="relative z-10 group-hover:text-white transition-colors">Book Site Visit</span>
+            <div className="flex flex-col sm:flex-row items-start gap-3 mb-8 animate-fade-in-up animate-delay-600">
+              <Link 
+                to="/contact" 
+                className="group relative bg-saffron-500 hover:bg-saffron-600 text-white font-semibold rounded-lg shadow-lg flex items-center gap-2 transition-all duration-300 hover:-translate-y-0.5"
+                style={{ padding: '10px 22px', fontSize: '14px' }}
+              >
+                <MapPin className="w-4 h-4" />
+                <span>Get Quote</span>
               </Link>
-              <button className="group relative px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold text-xs rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2">
-                <Download className="w-3 h-3 animate-bounce" />
-                <span>Download Brochure</span>
-              </button>
-              <a href={`tel:${PHONE_NUMBER}`} className="group relative px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold text-xs rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2">
-                <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-700 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <Phone className="w-3 h-3 relative z-10 animate-pulse" />
-                <span className="relative z-10">Call Now</span>
-              </a>
+              <Link 
+                to="/projects" 
+                className="group relative bg-white/10 backdrop-blur-md border-2 border-white/40 text-white hover:bg-white/20 font-semibold rounded-lg flex items-center gap-2 transition-all duration-300 hover:-translate-y-0.5"
+                style={{ padding: '10px 22px', fontSize: '14px' }}
+              >
+                <span>View Details</span>
+              </Link>
             </div>
 
             {/* Trust badges */}
