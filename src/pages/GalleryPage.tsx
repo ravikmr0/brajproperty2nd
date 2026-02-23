@@ -15,7 +15,7 @@ export default function GalleryPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-saffron-50 via-white to-temple-50">
+      <section className="relative pt-28 pb-10 bg-gradient-to-br from-saffron-50 via-white to-temple-50">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <span className="text-saffron-500 font-semibold text-sm uppercase tracking-wider">Gallery</span>
           <h1 className="section-title mt-2 text-4xl md:text-5xl">
@@ -26,10 +26,10 @@ export default function GalleryPage() {
       </section>
 
       {/* Gallery */}
-      <section className="py-16 md:py-24">
+      <section className="py-10 md:py-14">
         <div className="max-w-7xl mx-auto px-4">
           {/* Category Filters */}
-          <div className="flex flex-wrap justify-center gap-2 mb-10">
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
             {categories.map((cat) => (
               <button
                 key={cat}

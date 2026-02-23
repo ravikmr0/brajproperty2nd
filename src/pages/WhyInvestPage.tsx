@@ -6,7 +6,7 @@ export default function WhyInvestPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-saffron-50 via-white to-temple-50">
+      <section className="relative pt-28 pb-10 bg-gradient-to-br from-saffron-50 via-white to-temple-50">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <span className="text-saffron-500 font-semibold text-sm uppercase tracking-wider">Investment Guide</span>
           <h1 className="section-title mt-2 text-4xl md:text-5xl">
@@ -17,14 +17,14 @@ export default function WhyInvestPage() {
       </section>
 
       {/* Key Highlights - Premium Design */}
-      <section className="py-20 md:py-32 relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-saffron-50/30">
+      <section className="py-12 md:py-16 relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-saffron-50/30">
         {/* Background decoration */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,153,51,0.08),transparent_50%)]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(139,69,19,0.05),transparent_50%)]"></div>
         
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           {/* Section Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <span className="inline-block px-4 py-2 bg-gradient-to-r from-saffron-500 to-temple-600 text-white text-xs font-bold uppercase tracking-widest rounded-full shadow-lg mb-4">
               Prime Investment Advantages
             </span>
@@ -134,9 +134,9 @@ export default function WhyInvestPage() {
       </section>
 
       {/* Appreciation Chart */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-saffron-50/30 to-white">
+      <section className="py-10 md:py-14 bg-gradient-to-b from-saffron-50/30 to-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <span className="text-saffron-500 font-semibold text-sm uppercase tracking-wider">Growth Potential</span>
             <h2 className="section-title mt-2">Property Appreciation in Vrindavan</h2>
           </div>
