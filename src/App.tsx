@@ -10,6 +10,7 @@ import TestimonialsPage from '@/pages/TestimonialsPage';
 import GalleryPage from '@/pages/GalleryPage';
 import ContactPage from '@/pages/ContactPage';
 import ProjectDetailPage from '@/pages/ProjectDetailPage';
+import SearchResultsPage from '@/pages/SearchResultsPage';
 import ScrollToTop from '@/components/ScrollToTop';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path="/testimonials" element={<TestimonialsPage />} />
             <Route path="/gallery" element={<GalleryPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/search" element={<SearchResultsPage />} />
           </Routes>
         </main>
         <Footer />
