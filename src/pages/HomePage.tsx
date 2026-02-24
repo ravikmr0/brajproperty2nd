@@ -82,9 +82,12 @@ export default function HomePage() {
                 alt={slide.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
             </div>
           ))}
+          <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-saffron-400/20 blur-3xl" />
+          <div className="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-temple-200/20 blur-3xl" />
         </div>
 
         {/* Navigation Arrows */}
@@ -105,24 +108,25 @@ export default function HomePage() {
 
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 w-full">
-          <div className="max-w-3xl">
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
+            <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 bg-saffron-500/20 border border-saffron-400/30 rounded-full px-5 py-2.5 mb-6 backdrop-blur-sm animate-fade-in-up">
               <span className="w-2 h-2 bg-saffron-400 rounded-full animate-pulse" />
               <span className="text-saffron-200 text-sm font-semibold tracking-wide">MVDA APPROVED PROJECTS</span>
             </div>
 
             {/* Dynamic Heading based on current slide */}
-            <h1 className="text-2xl md:text-[34px] lg:text-[46px] font-heading font-semibold text-white mb-5 animate-fade-in-up animate-delay-200" style={{ lineHeight: '1.25', letterSpacing: '0.5px' }}>
+            <h1 className="text-3xl md:text-[42px] lg:text-[54px] font-heading font-semibold text-white mb-5 animate-fade-in-up animate-delay-200" style={{ lineHeight: '1.18', letterSpacing: '0.4px' }}>
               {heroSlides[currentSlide].title}
               <span className="text-saffron-400 block mt-2">{heroSlides[currentSlide].highlight}</span>
             </h1>
 
-            <div className="max-w-[60%]">
-              <p className="text-[15px] md:text-[17px] text-gray-100 mb-3 animate-fade-in-up animate-delay-400" style={{ lineHeight: '1.6' }}>
+            <div className="max-w-[520px]">
+              <p className="text-[15px] md:text-[17px] text-gray-100/95 mb-3 animate-fade-in-up animate-delay-400" style={{ lineHeight: '1.6' }}>
                 {heroSlides[currentSlide].subtitle}
               </p>
               <p className="text-saffron-300 font-semibold text-[15px] md:text-[17px] mb-6 animate-fade-in-up animate-delay-400 flex items-center gap-2">
-                <span className="text-base" aria-hidden>✨</span> {TAGLINE}
+                <span className="text-base" aria-hidden>*</span> {TAGLINE}
               </p>
             </div>
 
@@ -154,6 +158,55 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Quick Facts Panel */}
+          <div className="hidden lg:block">
+            <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 shadow-xl animate-fade-in-up animate-delay-400">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-12 h-12 rounded-xl bg-saffron-500/20 flex items-center justify-center">
+                  <Shield className="w-6 h-6 text-saffron-300" />
+                </div>
+                <div>
+                  <div className="text-white font-semibold text-lg">Trusted & Approved</div>
+                  <div className="text-gray-200 text-sm">Clear titles, MVDA compliance</div>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                {[
+                  { icon: MapPin, title: 'Prime Connectivity', desc: 'Near Bankey Bihari, Prem Mandir, ISKCON' },
+                  { icon: TrendingUp, title: 'High Appreciation', desc: 'Strong long-term growth potential' },
+                  { icon: FileCheck, title: 'Secure Documentation', desc: 'Transparent paperwork & registration' },
+                ].map(({ icon: Icon, title, desc }) => (
+                  <div key={title} className="flex items-start gap-3">
+                    <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center mt-0.5">
+                      <Icon className="w-5 h-5 text-saffron-300" />
+                    </div>
+                    <div>
+                      <div className="text-white font-semibold text-sm">{title}</div>
+                      <div className="text-gray-200 text-xs leading-relaxed">{desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-6 flex items-center gap-3">
+                <Link
+                  to="/contact"
+                  className="flex-1 text-center bg-white/15 hover:bg-white/25 text-white text-sm font-semibold py-2.5 rounded-lg transition-all"
+                >
+                  Book Site Visit
+                </Link>
+                <Link
+                  to="/projects"
+                  className="flex-1 text-center border border-white/30 text-white text-sm font-semibold py-2.5 rounded-lg hover:bg-white/15 transition-all"
+                >
+                  Explore Plots
+                </Link>
+              </div>
+            </div>
+          </div>
           </div>
         </div>
 
@@ -307,3 +360,4 @@ export default function HomePage() {
     </div>
   );
 }
+
