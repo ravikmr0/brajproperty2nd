@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BadgeCheck, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { projects } from '@/data/siteData';
 import QuotePopup from '@/components/QuotePopup';
 
@@ -52,7 +52,7 @@ export default function ProjectsSlider() {
             >
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading text-gray-900 leading-[1.05] mb-2">
                 Our{' '}
-                <span className="bg-gradient-to-r from-saffron-500 via-yellow-400 to-saffron-500 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-saffron-500 via-yellow-700 to-saffron-900 bg-clip-text text-transparent">
                   Projects
                 </span>
               </h2>
@@ -61,15 +61,15 @@ export default function ProjectsSlider() {
                 for those who appreciate the finest things in life.
               </p>
               <div className="mt-4 flex items-center justify-center gap-3">
-                <div className="w-12 h-[2px] bg-gradient-to-r from-transparent to-saffron-500" />
-                <div className="w-2 h-2 rounded-full bg-saffron-500" />
-                <div className="w-12 h-[2px] bg-gradient-to-l from-transparent to-saffron-500" />
+                <div className="w-12 h-[2px] bg-gradient-to-r from-transparent to-saffron-900" />
+                <div className="w-2 h-2 rounded-full bg-saffron-900" />
+                <div className="w-12 h-[2px] bg-gradient-to-l from-transparent to-saffron-900" />
               </div>
             </div>
 
             {/* Auto-playing Carousel */}
             <div className="relative">
-              <div className="relative h-[300px] sm:h-[420px] lg:h-[520px] rounded-3xl overflow-hidden">
+              <div className="relative h-[340px] sm:h-[450px] lg:h-[560px] rounded-3xl overflow-hidden">
                 {projects.map((project, idx) => {
                   const isActive = idx === activeIndex;
                   return (
@@ -103,24 +103,50 @@ export default function ProjectsSlider() {
                         </div>
 
                         {/* Content overlay - bottom left & right */}
-                        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 lg:p-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+                        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-9 lg:p-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
                           {/* Left side - heading and info */}
                           <div className="max-w-3xl transform translate-y-1 group-hover:translate-y-0 transition-transform duration-500">
-                            <h3 className="text-white font-heading font-bold text-3xl md:text-4xl lg:text-5xl leading-tight mb-3 drop-shadow-lg">
+                            <h3 className="text-white font-heading font-bold text-3xl md:text-4xl lg:text-5xl leading-tight mb-2 drop-shadow-lg">
                               {project.name}
                             </h3>
-                            <div className="flex items-center gap-2 text-white/90 mb-5">
-                              <BadgeCheck className="w-5 h-5 flex-shrink-0" />
+                            <div className="flex items-center gap-2 text-white/90 mb-2">
+                              <svg
+                                className="w-5 h-5 flex-shrink-0"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="1.8"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                aria-hidden="true"
+                              >
+                                <path d="M12 22s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" />
+                                <circle cx="12" cy="10" r="3" />
+                              </svg>
                               <span className="text-base md:text-lg font-medium">{project.location}</span>
                             </div>
 
-                            <p className="text-white/85 text-base md:text-lg leading-relaxed mb-5 line-clamp-3">
+                            <p className="text-white/85 text-base md:text-lg leading-relaxed mb-2.5 max-w-2xl line-clamp-1 tracking-[0.2px]">
                               {project.description}
                             </p>
 
-                            <div className="flex items-center gap-4 text-base md:text-lg">
-                              <span className="text-white/70 font-medium">Road:</span>
-                              <span className="text-white/90">{project.road}</span>
+                            <div className="flex items-center gap-2 text-sm md:text-base">
+                              <svg
+                                className="w-5 h-5 text-white/80 flex-shrink-0"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="1.8"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                aria-hidden="true"
+                              >
+                                <path d="M3 7h4l1 2h8l1-2h4" />
+                                <path d="M3 7v10h4l1-2h8l1 2h4V7" />
+                                <path d="M12 9v6" />
+                              </svg>
+                              <span className="text-white/70 font-medium">Road</span>
+                              <span className="text-white/90">· {project.road}</span>
                             </div>
                           </div>
 
@@ -132,7 +158,7 @@ export default function ProjectsSlider() {
                                 setSelectedProject(project.name);
                                 setIsQuotePopupOpen(true);
                               }}
-                              className="bg-saffron-500 hover:bg-saffron-600 text-white font-semibold px-8 py-3.5 rounded-lg transition-all duration-300 hover:shadow-xl hover:shadow-saffron-500/30 transform hover:-translate-y-0.5"
+                              className="bg-saffron-900 hover:bg-saffron-950 text-white font-semibold px-8 py-3.5 rounded-lg transition-all duration-300 hover:shadow-xl hover:shadow-saffron-500/30 transform hover:-translate-y-0.5"
                             >
                               Get Quote
                             </button>
@@ -162,7 +188,7 @@ export default function ProjectsSlider() {
                     prev === 0 ? projects.length - 1 : prev - 1
                   )
                 }
-                className="absolute left-3 top-1/2 -translate-y-1/2 z-20 h-10 w-10 rounded-full border border-white/40 bg-black/40 text-white backdrop-blur-sm transition hover:bg-black/60"
+                className="absolute left-3 md:left-4 lg:left-5 top-1/2 -translate-y-1/2 z-20 h-10 w-10 rounded-full border border-white/40 bg-black/40 text-white backdrop-blur-sm transition hover:bg-black/60"
               >
                 <ChevronLeft className="h-5 w-5 mx-auto" />
               </button>
@@ -172,7 +198,7 @@ export default function ProjectsSlider() {
                 onClick={() =>
                   setActiveIndex((prev) => (prev + 1) % projects.length)
                 }
-                className="absolute right-3 top-1/2 -translate-y-1/2 z-20 h-10 w-10 rounded-full border border-white/40 bg-black/40 text-white backdrop-blur-sm transition hover:bg-black/60"
+                className="absolute right-3 md:right-4 lg:right-5 top-1/2 -translate-y-1/2 z-20 h-10 w-10 rounded-full border border-white/40 bg-black/40 text-white backdrop-blur-sm transition hover:bg-black/60"
               >
                 <ChevronRight className="h-5 w-5 mx-auto" />
               </button>
@@ -185,7 +211,7 @@ export default function ProjectsSlider() {
                     aria-hidden="true"
                     className={`h-1.5 rounded-full transition-all duration-500 ${
                       idx === activeIndex
-                        ? 'w-6 bg-saffron-500'
+                        ? 'w-6 bg-saffron-900'
                         : 'w-2 bg-gray-300'
                     }`}
                   />

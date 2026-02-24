@@ -4,34 +4,34 @@ import {
   Phone, MapPin, Download, ArrowRight, Shield, FileCheck, TrendingUp, CreditCard, Building2, Star,
   CheckCircle2, ChevronRight, ChevronLeft,
 } from 'lucide-react';
-import { testimonials, PHONE_NUMBER, TAGLINE } from '@/data/siteData';
+import { testimonials, PHONE_NUMBER } from '@/data/siteData';
 import LocationSlider from '@/components/LocationSlider';
 import ProjectsSlider from '@/components/ProjectsSlider';
 
 const heroSlides = [
   {
     image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=90',
-    title: 'Own Your Dream Plot in the',
-    highlight: 'Divine City of Vrindavan',
-    subtitle: 'MVDA Approved | Prime Locations | High Return Potential'
+    title: '',
+    highlight: '',
+    subtitle: ''
   },
   {
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=90',
-    title: 'Premium Residential Plots Near',
-    highlight: 'Bankey Bihari & Prem Mandir',
-    subtitle: 'Secure Your Future in the Holy Land'
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=90',
+    title: '',
+    highlight: '',
+    subtitle: ''
   },
   {
-    image: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1920&q=90',
-    title: 'Invest in Vrindavan\'s',
-    highlight: 'Fastest Growing Property Market',
-    subtitle: '25-40% Annual Appreciation | 100% Legal & Approved'
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=90',
+    title: '',
+    highlight: '',
+    subtitle: ''
   },
   {
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=90',
-    title: 'Modern Amenities in the',
-    highlight: 'Sacred Heart of Braj',
-    subtitle: 'Wide Roads | Green Spaces | Temple Connectivity'
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=90',
+    title: '',
+    highlight: '',
+    subtitle: ''
   }
 ];
 
@@ -110,61 +110,31 @@ export default function HomePage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 w-full">
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
             <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-saffron-500/20 border border-saffron-400/30 rounded-full px-5 py-2.5 mb-6 backdrop-blur-sm animate-fade-in-up">
-              <span className="w-2 h-2 bg-saffron-400 rounded-full animate-pulse" />
-              <span className="text-saffron-200 text-sm font-semibold tracking-wide">MVDA APPROVED PROJECTS</span>
-            </div>
-
             {/* Dynamic Heading based on current slide */}
-            <h1 className="text-3xl md:text-[42px] lg:text-[54px] font-heading font-semibold text-white mb-5 animate-fade-in-up animate-delay-200" style={{ lineHeight: '1.18', letterSpacing: '0.4px' }}>
-              {heroSlides[currentSlide].title}
-              <span className="text-saffron-400 block mt-2">{heroSlides[currentSlide].highlight}</span>
-            </h1>
+            {(heroSlides[currentSlide].title || heroSlides[currentSlide].highlight) && (
+              <h1 className="text-3xl md:text-[42px] lg:text-[54px] font-heading font-semibold text-white mb-5 animate-fade-in-up animate-delay-200" style={{ lineHeight: '1.18', letterSpacing: '0.4px' }}>
+                {heroSlides[currentSlide].title}
+                {heroSlides[currentSlide].highlight && (
+                  <span className="text-saffron-900 block mt-2">{heroSlides[currentSlide].highlight}</span>
+                )}
+              </h1>
+            )}
 
             <div className="max-w-[520px]">
-              <p className="text-[15px] md:text-[17px] text-gray-100/95 mb-3 animate-fade-in-up animate-delay-400" style={{ lineHeight: '1.6' }}>
-                {heroSlides[currentSlide].subtitle}
-              </p>
-              <p className="text-saffron-300 font-semibold text-[15px] md:text-[17px] mb-6 animate-fade-in-up animate-delay-400 flex items-center gap-2">
-                <span className="text-base" aria-hidden>*</span> {TAGLINE}
-              </p>
+              {heroSlides[currentSlide].subtitle && (
+                <p className="text-[15px] md:text-[17px] text-gray-100/95 mb-3 animate-fade-in-up animate-delay-400" style={{ lineHeight: '1.6' }}>
+                  {heroSlides[currentSlide].subtitle}
+                </p>
+              )}
             </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-start gap-3 mb-8 animate-fade-in-up animate-delay-600">
-              <Link 
-                to="/contact" 
-                className="group relative bg-saffron-500 hover:bg-saffron-600 text-white font-semibold rounded-lg shadow-lg flex items-center gap-2 transition-all duration-300 hover:-translate-y-0.5"
-                style={{ padding: '10px 22px', fontSize: '14px' }}
-              >
-                <MapPin className="w-4 h-4" />
-                <span>Get Quote</span>
-              </Link>
-              <Link 
-                to="/projects" 
-                className="group relative bg-white/10 backdrop-blur-md border-2 border-white/40 text-white hover:bg-white/20 font-semibold rounded-lg flex items-center gap-2 transition-all duration-300 hover:-translate-y-0.5"
-                style={{ padding: '10px 22px', fontSize: '14px' }}
-              >
-                <span>View Details</span>
-              </Link>
-            </div>
-
-            {/* Trust badges */}
-            <div className="flex flex-wrap gap-4 animate-fade-in-up animate-delay-600">
-              {['MVDA Approved', '100+ Happy Families', '4 Premium Projects'].map((badge) => (
-                <div key={badge} className="flex items-center gap-2 bg-white/15 backdrop-blur-md rounded-xl px-5 py-3 border border-white/20 hover:bg-white/25 transition-all">
-                  <CheckCircle2 className="w-5 h-5 text-green-400" />
-                  <span className="text-white text-sm font-semibold">{badge}</span>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Quick Facts Panel */}
           <div className="hidden lg:block">
             <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 shadow-xl animate-fade-in-up animate-delay-400">
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-12 h-12 rounded-xl bg-saffron-500/20 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-xl bg-saffron-900/20 flex items-center justify-center">
                   <Shield className="w-6 h-6 text-saffron-300" />
                 </div>
                 <div>
@@ -210,8 +180,23 @@ export default function HomePage() {
           </div>
         </div>
 
+        {/* Bottom Badges */}
+        <div className="absolute bottom-10 md:bottom-12 left-1/2 -translate-x-1/2 z-20 w-full px-4">
+          <div className="mx-auto flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-6">
+            {['MVDA Approved', '100+ Happy Families', '4 Premium Projects'].map((badge) => (
+              <div
+                key={badge}
+                className="flex items-center gap-2 bg-white/15 backdrop-blur-md rounded-[30px] px-5 py-3 border border-white/20 shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(255,255,255,0.12)]"
+              >
+                <CheckCircle2 className="w-4 h-4 text-green-400" />
+                <span className="text-white text-sm font-medium">{badge}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Slide Indicators */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+        <div className="absolute bottom-24 md:bottom-28 left-1/2 -translate-x-1/2 z-20 flex gap-3">
           {heroSlides.map((_, index) => (
             <button
               key={index}
@@ -232,27 +217,37 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div>
-              <span className="text-saffron-500 font-semibold text-sm uppercase tracking-wider">About BrajProperty</span>
+              <span className="text-saffron-900 font-semibold text-sm uppercase tracking-wider">About BrajProperty</span>
               <h2 className="section-title mt-2">Building Trust, One Plot at a Time</h2>
-              <p className="text-gray-600 leading-relaxed mb-4">
-                BrajProperty brings the best opportunities in Vrindavan's fast-growing property market.
-                Buying land is not just investment — it is a foundation for generations.
-              </p>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                With MVDA-approved projects in prime locations near the holiest temples, we help families
-                and investors secure their future in the divine city of Lord Krishna.
-              </p>
-              <Link to="/projects" className="btn-primary">
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  BrajProperty is dedicated to offering premium, legally verified, and strategically located land opportunities in Vrindavan’s rapidly growing real estate market. 
+                  We understand that buying land is not just a financial investment it is a long-term legacy, a secure foundation for future generations, and a step toward building something meaningful in a spiritually powerful destination.
+                </p>
+
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  With MVDA-approved projects situated near the holiest temples and key spiritual landmarks of Lord Krishna’s divine city, we provide properties that combine faith, security, and smart growth potential. 
+                  Every project is carefully selected to ensure proper documentation, clear titles, and strong future appreciation prospects.
+                </p>
+
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Whether you are looking to build your dream home, create a peaceful retirement space, or secure high-potential investment land, BrajProperty guides you with transparency, professionalism, and personalized support at every step.
+                </p>
+
+                <p className="text-gray-600 leading-relaxed mb-6">
+                  Our mission is simple to help families and investors invest confidently in Vrindavan’s sacred land while ensuring legal safety, prime connectivity, and long-term value growth. 
+                  With BrajProperty, you don’t just purchase land you secure peace of mind in the eternal land of devotion.
+                </p>
+              <Link to="/projects" className="btn-primary bg-temple-900 hover:bg-temple-800">
                 Explore Projects <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </div>
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80"
+                src="/about.png"
                 alt="About BrajProperty"
                 className="rounded-2xl shadow-xl w-full"
               />
-              <div className="absolute -bottom-6 -left-6 bg-saffron-500 text-white rounded-xl p-5 shadow-xl">
+              <div className="absolute -bottom-6 -left-6 bg-saffron-900 text-white rounded-xl p-5 shadow-xl">
                 <div className="text-3xl font-bold">10+</div>
                 <div className="text-sm text-saffron-100">Years Experience</div>
               </div>
@@ -262,18 +257,13 @@ export default function HomePage() {
       </section>
 
       {/* Featured Projects */}
-      <section className="py-10 md:py-14 bg-white">
+      <section className="pt-6 pb-10 md:pt-8 md:pb-12 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-8">
-            <span className="text-saffron-500 font-semibold text-sm uppercase tracking-wider">Our Projects</span>
-            <h2 className="section-title mt-2">Premium Residences</h2>
-            <p className="section-subtitle">Discover our curated portfolio of luxury living spaces, designed for those who appreciate the finest things in life.</p>
-          </div>
-
+        
           <ProjectsSlider />
 
           <div className="text-center mt-8">
-            <Link to="/projects" className="btn-primary">
+            <Link to="/projects" className="btn-primary bg-saffron-900 hover:bg-saffron-800">
               View All Projects <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
           </div>
@@ -298,8 +288,8 @@ export default function HomePage() {
               { icon: Star, title: 'Trusted by 100+ Families', desc: 'Proven track record of delivering quality plots with complete satisfaction.' },
             ].map(({ icon: Icon, title, desc }) => (
               <div key={title} className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-saffron-200 group">
-                <div className="w-14 h-14 bg-saffron-50 group-hover:bg-saffron-500 rounded-xl flex items-center justify-center mb-4 transition-colors">
-                  <Icon className="w-7 h-7 text-saffron-500 group-hover:text-white transition-colors" />
+                <div className="w-14 h-14 bg-saffron-50 group-hover:bg-saffron-900 rounded-xl flex items-center justify-center mb-4 transition-colors">
+                  <Icon className="w-7 h-7 text-saffron-900 group-hover:text-white transition-colors" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>
@@ -313,7 +303,7 @@ export default function HomePage() {
       <section className="py-10 md:py-14 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-8">
-            <span className="text-saffron-500 font-semibold text-sm uppercase tracking-wider">Location Advantage</span>
+            <span className="text-saffron-600 font-semibold text-sm uppercase tracking-wider">Location Advantage</span>
             <h2 className="section-title mt-2">Near Holy Landmarks</h2>
             <p className="section-subtitle">Our projects are strategically located near Vrindavan's most revered temples</p>
           </div>

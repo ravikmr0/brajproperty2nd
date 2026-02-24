@@ -120,8 +120,8 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center shrink-0">
-                    <Clock className="w-5 h-5 text-orange-500" />
+                  <div className="w-12 h-12 bg-saffron-50 rounded-xl flex items-center justify-center shrink-0">
+                    <Clock className="w-5 h-5 text-saffron-500" />
                   </div>
                   <div>
                     <div className="font-semibold text-gray-900">Office Hours</div>

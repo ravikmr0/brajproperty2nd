@@ -2,11 +2,24 @@ import { useState } from 'react';
 import { galleryImages, TAGLINE } from '../data/siteData';
 import { X } from 'lucide-react';
 
-const categories = ['All', 'Site Photos', 'Aerial Shots', 'Layout', 'Construction', 'Team', 'Events'];
+const categories = [
+  'All',
+  'Bankey Bihari Greens',
+  'Bankey Bihari Kunj',
+  'Braj Anand Vatika',
+  'Krishna Gaur City',
+];
 
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+
+  const withBase = (src: string) => {
+    if (src.startsWith('http://') || src.startsWith('https://')) return src;
+    const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
+    const cleaned = src.replace(/^\//, '');
+    return `${base}${cleaned}`;
+  };
 
   const filteredImages = activeCategory === 'All'
     ? galleryImages
@@ -54,7 +67,7 @@ export default function GalleryPage() {
                 className="relative rounded-xl overflow-hidden aspect-square group cursor-pointer"
               >
                 <img
-                  src={img.src}
+                  src={withBase(img.src)}
                   alt={img.alt}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -76,7 +89,7 @@ export default function GalleryPage() {
             <X className="w-5 h-5 text-white" />
           </button>
           <img
-            src={lightboxImage.replace('w=600', 'w=1200')}
+            src={withBase(lightboxImage).replace('w=600', 'w=1200')}
             alt="Gallery"
             className="max-w-full max-h-[85vh] rounded-lg shadow-2xl"
             onClick={(e) => e.stopPropagation()}

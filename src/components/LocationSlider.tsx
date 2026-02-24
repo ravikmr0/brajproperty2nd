@@ -6,42 +6,42 @@ const temples = [
   { 
     name: 'Bankey Bihari Temple', 
     distance: '2-5 km from projects', 
-    img: '/bankey-bihari.png' 
+    img: 'https://static.wixstatic.com/media/d61bdf_16fd8552a8814f4285342d35da08cbdd~mv2.jpg/v1/fill/w_980,h_515,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/d61bdf_16fd8552a8814f4285342d35da08cbdd~mv2.jpg' 
   },
   { 
     name: 'Prem Mandir', 
     distance: '3-6 km from projects', 
-    img: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=800&q=80' 
+    img: 'https://media.istockphoto.com/id/2171891587/photo/prem-mandir-krishna-temple-vrindavan.jpg?s=612x612&w=0&k=20&c=PsCS__3uA1vgzm9p15WxeQsKcNNBKd7zwoYWik78II4=' 
   },
   { 
     name: 'ISKCON Temple', 
     distance: '2-4 km from projects', 
-    img: 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=800&q=80' 
+    img: 'https://static.wixstatic.com/media/d61bdf_41cadd6c9b8947aebfc18b1688142389~mv2.jpg/v1/fill/w_980,h_513,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/d61bdf_41cadd6c9b8947aebfc18b1688142389~mv2.jpg'
   },
   { 
     name: 'Chandrodaya Temple', 
     distance: '4-7 km from projects', 
-    img: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&q=80' 
+    img: 'https://c.ndtvimg.com/gws/ms/vrindavan-chandrodaya-mandir-worlds-tallest-temple/assets/6.jpeg?1730805562' 
   },
   { 
     name: 'Radha Raman Temple', 
     distance: '3-5 km from projects', 
-    img: 'https://images.unsplash.com/photo-1609416917845-e4b0e5cd1e8f?w=800&q=80' 
+    img: 'https://assets.indiaonline.in/cg/City-Guide/radha-raman.jpg'
   },
   { 
     name: 'Radha Vallabh Temple', 
     distance: '2-6 km from projects', 
-    img: 'https://images.unsplash.com/photo-1580713675818-9e90b48ea8be?w=800&q=80' 
+    img: 'https://www.brijwale.com/wp-content/uploads/2021/01/DSC_0047-4.jpg'
   },
   { 
     name: 'Govind Dev Ji Temple', 
     distance: '3-7 km from projects', 
-    img: 'https://images.unsplash.com/photo-1548013146-72479768bada?w=800&q=80' 
+    img: 'https://www.tourmyindia.com/states/uttarpradesh/images/govind-dev-ji-temple-vrindavan.jpg'
   },
-  { 
+  {
     name: 'Madan Mohan Temple', 
     distance: '4-8 km from projects', 
-    img: 'https://images.unsplash.com/photo-1609948127000-99653e51b1d6?w=800&q=80' 
+    img: 'https://www.mathuravrindavantourpackages.com/images/temple/slider/radha-madan-mohan-temple-3.webp'
   },
 ];
 

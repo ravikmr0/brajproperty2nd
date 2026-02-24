@@ -24,7 +24,7 @@ export default function FloatingButtons() {
       {/* Call */}
       <a
         href={`tel:${PHONE_NUMBER}`}
-        className="w-12 h-12 bg-saffron-500 hover:bg-saffron-600 text-white rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all hover:scale-105"
+        className="w-12 h-12 bg-saffron-900 hover:bg-saffron-950 text-white rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all hover:scale-105"
         aria-label="Call now"
       >
         <Phone className="w-5 h-5" />

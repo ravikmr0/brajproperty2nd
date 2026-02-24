@@ -68,7 +68,7 @@ export default function LeadPopup() {
     <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
       <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden animate-fade-in-up">
         {/* Header */}
-        <div className="bg-gradient-to-r from-saffron-500 to-temple-500 p-6 text-white relative">
+        <div className="bg-gradient-to-r from-saffron-900 to-temple-900 p-6 text-white relative">
           <button
             onClick={handleClose}
             className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
@@ -105,7 +105,7 @@ export default function LeadPopup() {
                 placeholder="Your Name"
                 required
                 disabled={isSubmitting}
-                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-saffron-400 focus:border-transparent outline-none text-sm disabled:bg-gray-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-saffron-900 focus:border-transparent outline-none text-sm disabled:bg-gray-50 disabled:cursor-not-allowed"
               />
               <input
                 type="tel"
@@ -113,14 +113,14 @@ export default function LeadPopup() {
                 placeholder="Phone Number"
                 required
                 disabled={isSubmitting}
-                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-saffron-400 focus:border-transparent outline-none text-sm disabled:bg-gray-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-saffron-900 focus:border-transparent outline-none text-sm disabled:bg-gray-50 disabled:cursor-not-allowed"
               />
               <input
                 type="email"
                 name="email"
                 placeholder="Email (Optional)"
                 disabled={isSubmitting}
-                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-saffron-400 focus:border-transparent outline-none text-sm disabled:bg-gray-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-saffron-900 focus:border-transparent outline-none text-sm disabled:bg-gray-50 disabled:cursor-not-allowed"
               />
               <button 
                 type="submit" 
@@ -137,7 +137,7 @@ export default function LeadPopup() {
                 )}
               </button>
               <p className="text-center text-xs text-gray-400">
-                Or call us at <a href={`tel:${PHONE_NUMBER}`} className="text-saffron-500 font-medium">{PHONE_NUMBER}</a>
+                Or call us at <a href={`tel:${PHONE_NUMBER}`} className="text-saffron-900 font-medium">{PHONE_NUMBER}</a>
               </p>
             </form>
           )}
