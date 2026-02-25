@@ -92,17 +92,17 @@ export default function HomePage() {
         {/* Navigation Arrows */}
         <button
           onClick={prevSlide}
-          className="absolute left-3 sm:left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-all group"
+          className="absolute left-2 sm:left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-all group"
           aria-label="Previous slide"
         >
-          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white group-hover:scale-110 transition-transform" />
+          <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white group-hover:scale-110 transition-transform" />
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-3 sm:right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-all group"
+          className="absolute right-2 sm:right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-all group"
           aria-label="Next slide"
         >
-          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white group-hover:scale-110 transition-transform" />
+          <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white group-hover:scale-110 transition-transform" />
         </button>
 
         {/* Content */}
@@ -128,21 +128,7 @@ export default function HomePage() {
                 )}
               </div>
 
-              {/* Mobile/Tablet CTA Buttons */}
-              <div className="flex flex-col sm:flex-row items-center gap-3 mt-5 lg:hidden">
-                <Link
-                  to="/contact"
-                  className="w-full sm:w-auto text-center bg-saffron-500 hover:bg-saffron-600 text-white text-sm font-semibold px-6 py-3 rounded-lg transition-all shadow-lg"
-                >
-                  Book Site Visit
-                </Link>
-                <Link
-                  to="/projects"
-                  className="w-full sm:w-auto text-center border border-white/40 text-white text-sm font-semibold px-6 py-3 rounded-lg hover:bg-white/15 transition-all"
-                >
-                  Explore Plots
-                </Link>
-              </div>
+              {/* Mobile/Tablet CTA Buttons - Hidden */}
             </div>
 
             {/* Quick Facts Panel - Desktop Only */}
@@ -179,7 +165,7 @@ export default function HomePage() {
                 <div className="mt-6 flex items-center gap-3">
                   <Link
                     to="/contact"
-                    className="flex-1 text-center bg-white/15 hover:bg-white/25 text-white text-sm font-semibold py-2.5 rounded-lg transition-all"
+                    className="flex-1 text-center bg-white text-saffron-600 hover:bg-white/90 text-sm font-semibold py-2.5 rounded-lg transition-all"
                   >
                     Book Site Visit
                   </Link>
@@ -196,30 +182,30 @@ export default function HomePage() {
         </div>
 
         {/* Bottom Badges */}
-        <div className="absolute bottom-6 sm:bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 z-20 w-full px-4">
-          <div className="mx-auto flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-4 md:gap-6">
+        <div className="absolute bottom-5 sm:bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 z-20 w-full px-3">
+          <div className="mx-auto flex flex-row justify-center gap-2 sm:gap-4 md:gap-6 flex-wrap">
             {['MVDA Approved', '100+ Happy Families', '4 Premium Projects'].map((badge) => (
               <div
                 key={badge}
-                className="flex items-center gap-2 bg-white/15 backdrop-blur-md rounded-[30px] px-4 py-2 sm:px-5 sm:py-3 border border-white/20 shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(255,255,255,0.12)]"
+                className="flex items-center gap-1.5 bg-white/15 backdrop-blur-md rounded-[30px] px-3 py-1.5 sm:px-5 sm:py-3 border border-white/20 shadow-lg"
               >
-                <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-400" />
-                <span className="text-white text-xs sm:text-sm font-medium">{badge}</span>
+                <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4 text-green-400 flex-shrink-0" />
+                <span className="text-white text-[11px] sm:text-sm font-medium whitespace-nowrap">{badge}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Slide Indicators */}
-        <div className="absolute bottom-16 sm:bottom-20 md:bottom-24 left-1/2 -translate-x-1/2 z-20 flex gap-2 sm:gap-3">
+        <div className="absolute bottom-16 sm:bottom-20 md:bottom-24 left-1/2 -translate-x-1/2 z-20 flex gap-1.5 sm:gap-3">
           {heroSlides.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
               className={`transition-all ${
                 index === currentSlide
-                  ? 'w-8 sm:w-12 h-2.5 sm:h-3 bg-saffron-400'
-                  : 'w-2.5 sm:w-3 h-2.5 sm:h-3 bg-white/40 hover:bg-white/60'
+                  ? 'w-6 sm:w-12 h-2 sm:h-3 bg-saffron-400'
+                  : 'w-2 sm:w-3 h-2 sm:h-3 bg-white/40 hover:bg-white/60'
               } rounded-full`}
               aria-label={`Go to slide ${index + 1}`}
             />

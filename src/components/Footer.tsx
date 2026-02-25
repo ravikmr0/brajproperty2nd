@@ -34,7 +34,7 @@ export default function Footer() {
               <Phone className="w-4 h-4 mr-2" />
               Call Now
             </a>
-            <Link to="/contact" className="btn-secondary border-white text-white hover:bg-white/10">
+            <Link to="/contact" className="btn-primary bg-white text-saffron-600 hover:bg-gray-100">
               Book Site Visit
             </Link>
           </div>

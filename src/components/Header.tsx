@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, Phone, Search } from 'lucide-react';
-import { PHONE_NUMBER, TAGLINE } from '../data/siteData';
+import { Menu, X, Search } from 'lucide-react';
+// import { PHONE_NUMBER, TAGLINE } from '../data/siteData';
 
 const navLinks = [
   { label: 'Home', path: '/' },
@@ -17,7 +17,6 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [showMobileSearch, setShowMobileSearch] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -29,7 +28,6 @@ export default function Header() {
 
   useEffect(() => {
     setIsOpen(false);
-    setShowMobileSearch(false);
   }, [location]);
 
   const handleSearch = (e: React.FormEvent) => {
@@ -37,7 +35,7 @@ export default function Header() {
     if (searchQuery.trim()) {
       navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
       setSearchQuery('');
-      setShowMobileSearch(false);
+      setIsOpen(false);
     }
   };
 
@@ -46,9 +44,9 @@ export default function Header() {
       isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-white/90 backdrop-blur-sm'
     }`}>
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-16 md:h-20 gap-4">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
+          <Link to="/" className="flex items-center gap-2 group flex-shrink-0">
             <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow bg-white">
               <img
                 src="/logo.png"
@@ -56,7 +54,7 @@ export default function Header() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="hidden sm:block">
+            <div className="hidden lg:block">
               <h1 className="text-lg md:text-xl font-heading font-bold text-gray-900 leading-tight">
                 Braj<span className="text-saffron-500">Property</span>
               </h1>
@@ -64,8 +62,8 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* Search Bar - Desktop */}
-          <form onSubmit={handleSearch} className="hidden md:flex items-center flex-1 max-w-xs mx-4">
+          {/* Search Bar - All screen sizes */}
+          <form onSubmit={handleSearch} className="flex items-center flex-1 max-w-xs">
             <div className="relative w-full">
               <input
                 type="text"
@@ -86,7 +84,7 @@ export default function Header() {
                 to={link.path}
                 className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                   location.pathname === link.path
-                    ? 'text-white bg-saffron-50'
+                    ? 'text-gray-900 bg-saffron-50'
                     : 'text-gray-700 hover:text-saffron-600 hover:bg-saffron-50/50'
                 }`}
               >
@@ -95,51 +93,14 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* CTA + Mobile Toggle */}
-          <div className="flex items-center gap-2">
-            {/* Mobile Search Toggle */}
-            <button
-              onClick={() => {
-                setShowMobileSearch(!showMobileSearch);
-                setIsOpen(false);
-              }}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
-              aria-label="Toggle search"
-            >
-              <Search className="w-5 h-5" />
-            </button>
-
-            <button
-              onClick={() => {
-                setIsOpen(!isOpen);
-                setShowMobileSearch(false);
-              }}
-              className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Search Bar */}
-      <div className={`md:hidden transition-all duration-300 overflow-hidden ${
-        showMobileSearch ? 'max-h-20 border-t' : 'max-h-0'
-      }`}>
-        <div className="bg-white px-4 py-3">
-          <form onSubmit={handleSearch}>
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search projects, locations..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-4 py-2 pl-10 pr-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-saffron-500 focus:border-transparent text-sm"
-              />
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
-            </div>
-          </form>
+          {/* Menu Toggle */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors flex-shrink-0"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
       </div>
 
