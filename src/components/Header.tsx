@@ -86,7 +86,7 @@ export default function Header() {
                 to={link.path}
                 className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                   location.pathname === link.path
-                    ? 'text-saffron-600 bg-saffron-50'
+                    ? 'text-white bg-saffron-50'
                     : 'text-gray-700 hover:text-saffron-600 hover:bg-saffron-50/50'
                 }`}
               >

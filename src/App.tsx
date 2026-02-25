@@ -11,6 +11,7 @@ import GalleryPage from '@/pages/GalleryPage';
 import ContactPage from '@/pages/ContactPage';
 import ProjectDetailPage from '@/pages/ProjectDetailPage';
 import SearchResultsPage from '@/pages/SearchResultsPage';
+import AboutPage from '@/pages/AboutPage';
 import ScrollToTop from '@/components/ScrollToTop';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/projects/:slug" element={<ProjectDetailPage />} />
             <Route path="/why-invest" element={<WhyInvestPage />} />
