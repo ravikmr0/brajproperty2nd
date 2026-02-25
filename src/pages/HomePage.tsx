@@ -250,7 +250,7 @@ export default function HomePage() {
       </section>
 
       {/* About Snapshot */}
-      <section className="py-10 md:py-14 bg-gradient-to-b from-white to-saffron-50/30">
+      <section className="py-8 md:py-10 bg-gradient-to-b from-white to-saffron-50/30">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div>
@@ -270,7 +270,7 @@ export default function HomePage() {
                   Whether you are looking to build your dream home, create a peaceful retirement space, or secure high-potential investment land, BrajProperty guides you with transparency, professionalism, and personalized support at every step.
                 </p>
 
-                <p className="text-gray-600 leading-relaxed mb-6">
+                <p className="text-gray-600 leading-relaxed mb-4">
                   Our mission is simple to help families and investors invest confidently in Vrindavan’s sacred land while ensuring legal safety, prime connectivity, and long-term value growth. 
                   With BrajProperty, you don’t just purchase land you secure peace of mind in the eternal land of devotion.
                 </p>
@@ -284,8 +284,8 @@ export default function HomePage() {
                 alt="About BrajProperty"
                 className="rounded-2xl shadow-xl w-full"
               />
-              <div className="absolute -bottom-6 -left-6 bg-saffron-800 text-white rounded-xl p-5 shadow-xl">
-                <div className="text-3xl font-bold">10+</div>
+              <div className="absolute -bottom-4 -left-4 bg-saffron-800 text-white rounded-xl p-4 shadow-xl">
+                <div className="text-2xl font-bold">10+</div>
                 <div className="text-sm text-white">Years Experience</div>
               </div>
             </div>
@@ -294,12 +294,12 @@ export default function HomePage() {
       </section>
 
       {/* Featured Projects */}
-      <section className="pt-6 pb-10 md:pt-8 md:pb-12 bg-white">
+      <section className="pt-6 pb-8 md:pt-8 md:pb-10 bg-white">
         <div className="max-w-7xl mx-auto px-4">
         
           <ProjectsSlider />
 
-          <div className="text-center mt-8">
+          <div className="text-center mt-4">
             <Link to="/projects" className="btn-primary bg-saffron-900 hover:bg-saffron-800">
               View All Projects <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
@@ -308,14 +308,14 @@ export default function HomePage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-10 md:py-14 bg-gradient-to-b from-saffron-50/50 to-white">
+      <section className="py-8 md:py-10 bg-gradient-to-b from-saffron-50/50 to-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-8">
+          <div className="text-center mb-6">
             <span className="text-saffron-500 font-semibold text-sm uppercase tracking-wider">Why Choose Us</span>
-            <h2 className="section-title mt-2">Your Trusted Property Partner</h2>
+            <h2 className="section-title mt-1.5">Your Trusted Property Partner</h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               { icon: Shield, title: 'MVDA Approved', desc: 'All projects are officially approved by Mathura-Vrindavan Development Authority.' },
               { icon: Building2, title: 'Prime Temple Connectivity', desc: 'Plots near Bankey Bihari, Prem Mandir, ISKCON & Chandrodaya temples.' },
@@ -324,9 +324,9 @@ export default function HomePage() {
               { icon: TrendingUp, title: 'High Appreciation', desc: 'Vrindavan property values have seen 25-40% appreciation annually.' },
               { icon: Star, title: 'Trusted by 100+ Families', desc: 'Proven track record of delivering quality plots with complete satisfaction.' },
             ].map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-temple-200 group">
-                <div className="w-14 h-14 bg-gold-100 group-hover:bg-temple-600 rounded-xl flex items-center justify-center mb-4 transition-colors">
-                  <Icon className="w-7 h-7 text-temple-700 group-hover:text-white transition-colors" />
+              <div key={title} className="bg-white rounded-xl p-5 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-temple-200 group">
+                <div className="w-12 h-12 bg-gold-100 group-hover:bg-temple-600 rounded-xl flex items-center justify-center mb-3 transition-colors">
+                  <Icon className="w-6 h-6 text-temple-700 group-hover:text-white transition-colors" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>
@@ -337,11 +337,11 @@ export default function HomePage() {
       </section>
 
       {/* Property Highlights */}
-      <section className="py-10 md:py-14 bg-white">
+      <section className="py-8 md:py-10 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-8">
+          <div className="text-center mb-6">
             <span className="text-saffron-600 font-semibold text-sm uppercase tracking-wider">Location Advantage</span>
-            <h2 className="section-title mt-2">Near Holy Landmarks</h2>
+            <h2 className="section-title mt-1.5">Near Holy Landmarks</h2>
             <p className="section-subtitle">Our projects are strategically located near Vrindavan's most revered temples</p>
           </div>
 
@@ -350,22 +350,22 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials Preview */}
-      <section className="py-10 md:py-14 bg-gradient-to-b from-temple-50/30 to-white">
+      <section className="py-8 md:py-10 bg-gradient-to-b from-temple-50/30 to-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-8">
+          <div className="text-center mb-6">
             <span className="text-saffron-500 font-semibold text-sm uppercase tracking-wider">Testimonials</span>
-            <h2 className="section-title mt-2">What Our Customers Say</h2>
+            <h2 className="section-title mt-1.5">What Our Customers Say</h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-3 gap-4">
             {testimonials.slice(0, 3).map((t) => (
-              <div key={t.id} className="bg-white rounded-xl p-6 shadow-md border border-gray-100">
-                <div className="flex items-center gap-1 mb-4">
+              <div key={t.id} className="bg-white rounded-xl p-5 shadow-md border border-gray-100">
+                <div className="flex items-center gap-1 mb-3">
                   {Array.from({ length: t.rating }).map((_, i) => (
                     <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
                   ))}
                 </div>
-                <p className="text-gray-600 text-sm leading-relaxed mb-4 italic">"{t.quote}"</p>
+                <p className="text-gray-600 text-sm leading-relaxed mb-3 italic">"{t.quote}"</p>
                 <div className="flex items-center gap-3">
                   <img src={t.image} alt={t.name} className="w-10 h-10 rounded-full object-cover" />
                   <div>
@@ -377,7 +377,7 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="text-center mt-8">
+          <div className="text-center mt-6">
             <Link to="/testimonials" className="btn-secondary">
               View All Testimonials <ArrowRight className="w-4 h-4 ml-2" />
             </Link>

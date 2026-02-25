@@ -26,7 +26,7 @@ const trustPoints = [
   {
     icon: FileCheck,
     title: 'Clear Registry & Legal Transparency',
-    desc: 'We believe in 100% documentation transparency — clear titles, registered plots, and hassle-free ownership transfer.',
+    desc: 'We believe in 100% documentation transparency clear titles, registered plots, and hassle-free ownership transfer.',
     gradient: 'from-emerald-500 to-teal-500',
     iconBg: 'bg-emerald-50',
     iconColor: 'text-emerald-600',
@@ -50,7 +50,7 @@ const trustPoints = [
   {
     icon: Handshake,
     title: 'End-to-End Assistance',
-    desc: 'From site visits to documentation to possession — our dedicated team guides you at every step of your journey.',
+    desc: 'From site visits to documentation to possession our dedicated team guides you at every step of your journey.',
     gradient: 'from-indigo-500 to-blue-500',
     iconBg: 'bg-indigo-50',
     iconColor: 'text-indigo-600',
@@ -143,12 +143,12 @@ export default function AboutPage() {
           </div>
           <span className="block text-saffron-500 font-semibold text-sm uppercase tracking-widest mb-3">Our Mission</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-gray-900 mb-8 leading-tight max-w-4xl mx-auto">
-            To provide legally secure, high-growth residential plots that combine{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-saffron-500 to-temple-600">spiritual peace</span>{' '}
+           To Provide Secure, Srofitable{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-saffron-500 to-temple-600">profitable</span>{' '}
             with <span className="text-transparent bg-clip-text bg-gradient-to-r from-temple-600 to-saffron-500">smart investment.</span>
           </h2>
           <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
-            We don't just sell plots — we create opportunities for families to build their dream homes in one of India's
+            We don't just sell plots we create opportunities for families to build their dream homes in one of India's
             most sacred and fastest-growing cities. Every project is chosen with care, approved by authorities, and
             positioned for long-term growth.
           </p>

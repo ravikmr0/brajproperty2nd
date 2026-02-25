@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, Search, Phone } from 'lucide-react';
-import { PHONE_NUMBER } from '../data/siteData';
+import { Menu, X, Search } from 'lucide-react';
 
 const navLinks = [
   { label: 'Home', path: '/' },
@@ -56,7 +55,7 @@ export default function Header() {
             <div className="w-9 h-9 md:w-11 md:h-11 rounded-full overflow-hidden shadow-md ring-2 ring-saffron-100 group-hover:ring-saffron-300 transition-all duration-200">
               <img src="/logo.png" alt="BrajProperty" className="w-full h-full object-cover" />
             </div>
-            <div>
+            <div className="hidden sm:block">
               <h1 className="text-base md:text-lg font-heading font-bold text-gray-900 leading-none">
                 Braj<span className="text-saffron-500">Property</span>
               </h1>
@@ -84,10 +83,24 @@ export default function Header() {
             ))}
           </nav>
 
+          {/* Tablet & Mobile inline search (after logo, before menu) */}
+          <form onSubmit={handleSearch} className="flex lg:hidden flex-1 mx-2">
+            <div className="relative w-full">
+              <input
+                type="text"
+                placeholder="Search projects..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full px-4 py-2 pl-9 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-saffron-400 focus:border-transparent text-sm bg-gray-50"
+              />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400" />
+            </div>
+          </form>
+
           {/* Right Actions */}
           <div className="flex items-center gap-2">
-            {/* Search toggle (desktop) */}
-            <div className="hidden md:flex items-center">
+            {/* Search toggle (desktop only) */}
+            <div className="hidden lg:flex items-center">
               {searchOpen ? (
                 <form onSubmit={handleSearch} className="flex items-center">
                   <div className="relative">
@@ -116,19 +129,10 @@ export default function Header() {
               )}
             </div>
 
-            {/* Call CTA (desktop) */}
-            <a
-              href={`tel:${PHONE_NUMBER}`}
-              className="hidden md:inline-flex items-center gap-1.5 bg-saffron-500 hover:bg-saffron-600 text-white text-xs font-semibold px-4 py-2 rounded-xl transition-all duration-200 shadow-sm hover:shadow-md"
-            >
-              <Phone className="w-3.5 h-3.5" />
-              Call Now
-            </a>
-
             {/* Mobile menu toggle */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 rounded-xl hover:bg-gray-100 transition-colors"
+              className="lg:hidden p-2 rounded-xl hover:bg-gray-100 transition-colors flex-shrink-0"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-5 h-5 text-gray-700" /> : <Menu className="w-5 h-5 text-gray-700" />}
@@ -142,20 +146,6 @@ export default function Header() {
         isOpen ? 'max-h-[600px] border-t border-gray-100' : 'max-h-0'
       }`}>
         <div className="bg-white px-4 py-4 space-y-1">
-          {/* Mobile search */}
-          <form onSubmit={handleSearch} className="mb-3">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search projects, locations..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-4 py-2.5 pl-9 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-saffron-400 text-sm bg-gray-50"
-              />
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-            </div>
-          </form>
-
           {navLinks.map((link) => (
             <Link
               key={link.path}
@@ -170,15 +160,6 @@ export default function Header() {
             </Link>
           ))}
 
-          <div className="pt-2">
-            <a
-              href={`tel:${PHONE_NUMBER}`}
-              className="flex items-center justify-center gap-2 w-full bg-saffron-500 hover:bg-saffron-600 text-white font-semibold py-3 rounded-xl transition-colors"
-            >
-              <Phone className="w-4 h-4" />
-              Call Now
-            </a>
-          </div>
         </div>
       </div>
     </header>
