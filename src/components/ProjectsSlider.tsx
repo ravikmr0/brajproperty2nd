@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MapPin, DollarSign, Home } from 'lucide-react';
 import { projects } from '@/data/siteData';
 import QuotePopup from '@/components/QuotePopup';
 
@@ -37,32 +37,32 @@ export default function ProjectsSlider() {
 
   return (
     <>
-      <section ref={sectionRef} className="relative overflow-hidden bg-white">
+      <section ref={sectionRef} className="relative overflow-hidden bg-gradient-to-b from-white via-white to-saffron-50/30">
         {/* Decorative elements */}
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full bg-saffron-500/[0.06] blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full bg-emerald-500/[0.04] blur-3xl pointer-events-none" />
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full bg-saffron-500/[0.08] blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full bg-emerald-500/[0.05] blur-3xl pointer-events-none" />
+        <div className="absolute top-1/3 right-0 w-[400px] h-[400px] rounded-full bg-orange-500/[0.04] blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 py-8 md:py-10 px-5 md:px-6">
+        <div className="relative z-10 py-10 md:py-16 px-5 md:px-6">
           <div className="max-w-7xl mx-auto">
             {/* Section Heading */}
             <div
-              className={`text-center mb-6 md:mb-8 transition-all duration-1000 ${
+              className={`text-center mb-8 md:mb-12 transition-all duration-1000 ${
                 inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
             >
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading text-gray-900 leading-[1.05] mb-2">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading text-gray-900 leading-[1.05] mb-3">
                 Our{' '}
                 <span className="bg-gradient-to-r from-saffron-500 via-yellow-700 to-saffron-900 bg-clip-text text-transparent">
-                  Projects
+                  Premium Projects
                 </span>
               </h2>
               <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto font-light leading-relaxed">
-                Discover our curated portfolio of luxury living spaces, designed
-                for those who appreciate the finest things in life.
+                Discover our curated portfolio of MVDA-approved developments with world-class amenities and spiritual living.
               </p>
-              <div className="mt-4 flex items-center justify-center gap-3">
+              <div className="mt-5 flex items-center justify-center gap-3">
                 <div className="w-12 h-[2px] bg-gradient-to-r from-transparent to-saffron-900" />
-                <div className="w-2 h-2 rounded-full bg-saffron-900" />
+                <div className="w-2.5 h-2.5 rounded-full bg-saffron-900" />
                 <div className="w-12 h-[2px] bg-gradient-to-l from-transparent to-saffron-900" />
               </div>
             </div>
@@ -81,72 +81,59 @@ export default function ProjectsSlider() {
                           : 'opacity-0 scale-[1.03] z-0'
                       }`}
                     >
-                      <div className="group relative rounded-2xl overflow-hidden shadow-lg shadow-black/20 h-full">
+                      <div className="group relative rounded-2xl overflow-hidden shadow-2xl shadow-black/40 h-full">
                         {/* Image with zoom effect */}
                         <img
                           src={project.image}
                           alt={project.name}
+                          loading="lazy"
                           className="w-full h-full object-cover scale-[1.02] group-hover:scale-110 transition-transform duration-700 ease-out"
                         />
 
-                        {/* Dark gradient overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+                        {/* Premium gradient overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/55 to-black/92 opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
 
-                        {/* Status badges */}
-                        <div className="absolute top-6 left-6 sm:top-8 sm:left-8 flex gap-3">
-                          <span className={`${project.statusColor} text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-full backdrop-blur-sm`}>
+                        {/* Status badges - Enhanced with backdrop blur */}
+                        <div className="absolute top-6 left-6 sm:top-8 sm:left-8 flex gap-3 z-20">
+                          <span className={`${project.statusColor} text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-full backdrop-blur-lg border border-white/25 shadow-lg`}>
                             {project.status}
                           </span>
-                          <span className="bg-white/95 text-gray-800 text-xs sm:text-sm font-bold px-4 py-2 rounded-full backdrop-blur-sm">
+                          <span className="bg-white/90 text-gray-800 text-xs sm:text-sm font-bold px-4 py-2 rounded-full backdrop-blur-lg border border-white/30 shadow-lg">
                             {project.type}
                           </span>
                         </div>
 
-                        {/* Content overlay - bottom left & right */}
-                        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-9 lg:p-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+                        {/* Premium corner badge */}
+                        <div className="absolute top-6 right-6 sm:top-8 sm:right-8 z-20">
+                          <div className="text-white/70 text-xs font-semibold uppercase tracking-widest px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-full">
+                            Featured
+                          </div>
+                        </div>
+
+                        {/* Content overlay - enhanced */}
+                        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 lg:p-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 md:gap-8 z-20">
                           {/* Left side - heading and info */}
                           <div className="max-w-3xl transform translate-y-1 group-hover:translate-y-0 transition-transform duration-500">
-                            <h3 className="text-white font-heading font-bold text-3xl md:text-4xl lg:text-5xl leading-tight mb-2 drop-shadow-lg">
+                            <h3 className="text-white font-heading font-bold text-3xl md:text-4xl lg:text-5xl leading-tight mb-3 drop-shadow-xl">
                               {project.name}
                             </h3>
-                            <div className="flex items-center gap-2 text-white/90 mb-2">
-                              <svg
-                                className="w-5 h-5 flex-shrink-0"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="1.8"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                aria-hidden="true"
-                              >
-                                <path d="M12 22s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" />
-                                <circle cx="12" cy="10" r="3" />
-                              </svg>
+
+                            {/* Location with enhanced icon */}
+                            <div className="flex items-center gap-2.5 text-white/90 mb-4">
+                              <MapPin className="w-5 h-5 flex-shrink-0 text-saffron-300" />
                               <span className="text-base md:text-lg font-medium">{project.location}</span>
                             </div>
 
-                            <p className="text-white/85 text-base md:text-lg leading-relaxed mb-2.5 max-w-2xl line-clamp-1 tracking-[0.2px]">
+                            {/* Description */}
+                            <p className="text-white/80 text-base md:text-lg leading-relaxed mb-4 max-w-2xl line-clamp-2 tracking-[0.3px]">
                               {project.description}
                             </p>
 
-                            <div className="flex items-center gap-2 text-sm md:text-base">
-                              <svg
-                                className="w-5 h-5 text-white/80 flex-shrink-0"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="1.8"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                aria-hidden="true"
-                              >
-                                <path d="M3 7h4l1 2h8l1-2h4" />
-                                <path d="M3 7v10h4l1-2h8l1 2h4V7" />
-                                <path d="M12 9v6" />
-                              </svg>
-                              <span className="text-white/70 font-medium">Road</span>
-                              <span className="text-white/90">· {project.road}</span>
+                            {/* Road info - Enhanced */}
+                            <div className="flex items-center gap-2.5 text-sm md:text-base">
+                              <Home className="w-5 h-5 text-saffron-300 flex-shrink-0" />
+                              <span className="text-white/70 font-medium">Road Width</span>
+                              <span className="text-white/90 font-semibold">· {project.road}</span>
                             </div>
                           </div>
 

@@ -82,3 +82,67 @@
 .animate-delay-200 { animation-delay: 200ms; }
 .animate-delay-400 { animation-delay: 400ms; }
 .animate-delay-600 { animation-delay: 600ms; }
+
+/* 3D Rotation animations */
+@keyframes rotate3d {
+  0% { transform: perspective(1000px) rotateY(0deg); }
+  100% { transform: perspective(1000px) rotateY(360deg); }
+}
+
+@keyframes rotate3dSlow {
+  0% { transform: perspective(1200px) rotateY(0deg) rotateX(5deg); }
+  50% { transform: perspective(1200px) rotateY(180deg) rotateX(-5deg); }
+  100% { transform: perspective(1200px) rotateY(360deg) rotateX(5deg); }
+}
+
+@keyframes orbitSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 140, 26, 0.3), 0 0 40px rgba(255, 140, 26, 0.1); }
+  50% { box-shadow: 0 0 30px rgba(255, 140, 26, 0.5), 0 0 60px rgba(255, 140, 26, 0.2); }
+}
+
+@keyframes floatRotate {
+  0% { transform: translateY(0px) rotateZ(0deg); }
+  25% { transform: translateY(-8px) rotateZ(2deg); }
+  50% { transform: translateY(-15px) rotateZ(0deg); }
+  75% { transform: translateY(-8px) rotateZ(-2deg); }
+  100% { transform: translateY(0px) rotateZ(0deg); }
+}
+
+@keyframes countUp {
+  0% { opacity: 0; transform: scale(0.5) translateY(20px); }
+  60% { transform: scale(1.1) translateY(-5px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(255, 140, 26, 0.2); }
+  50% { border-color: rgba(255, 140, 26, 0.6); }
+}
+
+@keyframes particleFloat {
+  0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.6; }
+  25% { transform: translateY(-30px) translateX(10px) scale(1.2); opacity: 1; }
+  50% { transform: translateY(-60px) translateX(-5px) scale(0.8); opacity: 0.4; }
+  75% { transform: translateY(-90px) translateX(15px) scale(1.1); opacity: 0.8; }
+  100% { transform: translateY(-120px) translateX(0) scale(0.6); opacity: 0; }
+}
+
+.animate-rotate3d { animation: rotate3d 20s linear infinite; }
+.animate-rotate3d-slow { animation: rotate3dSlow 30s linear infinite; }
+.animate-orbit { animation: orbitSpin 25s linear infinite; }
+.animate-shimmer { animation: shimmer 3s ease-in-out infinite; background-size: 200% auto; }
+.animate-glow-pulse { animation: glowPulse 3s ease-in-out infinite; }
+.animate-float-rotate { animation: floatRotate 6s ease-in-out infinite; }
+.animate-count-up { animation: countUp 0.8s ease-out forwards; }
+.animate-border-glow { animation: borderGlow 3s ease-in-out infinite; }
+.animate-particle { animation: particleFloat 4s ease-in-out infinite; }
