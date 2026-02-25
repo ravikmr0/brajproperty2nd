@@ -68,48 +68,7 @@ export default function AboutPage() {
   return (
     <div className="pt-16 md:pt-20">
 
-      {/* ===== 1. HERO SECTION ===== */}
-      <section className="relative py-20 md:py-28 overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-saffron-500/30"></div>
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1585128903994-9788298932a4?w=1920&q=80')] bg-cover bg-center opacity-15"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-gray-900/60"></div>
 
-        {/* Decorative elements */}
-        <div className="absolute top-10 left-10 w-72 h-72 bg-saffron-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-temple-500/10 rounded-full blur-3xl"></div>
-
-        <div className="max-w-5xl mx-auto px-4 text-center relative z-10">
-          <span className="inline-block px-5 py-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs font-bold uppercase tracking-[0.2em] rounded-full mb-6">
-            About BrajProperty
-          </span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white mb-6 leading-tight">
-            Building Trust.<br />
-            Creating <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-saffron-500">Generations.</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 font-light mb-6 max-w-3xl mx-auto">
-            Your Gateway to Secure & Spiritual Living in Vrindavan.
-          </p>
-          <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-            At BrajProperty, we believe that owning land in Vrindavan is more than a financial decision — it's an emotional homecoming.
-            We help families, devotees, and investors find their sacred piece of Braj Bhoomi with complete trust and transparency.
-          </p>
-
-          {/* Trust Badges */}
-          <div className="flex flex-wrap items-center justify-center gap-4 mt-10">
-            {[
-              { icon: Shield, label: 'MVDA Approved' },
-              { icon: Users, label: '100+ Families' },
-              { icon: FileCheck, label: 'Clear Registry' },
-            ].map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-                <Icon className="w-4 h-4 text-amber-400" />
-                <span className="text-white text-sm font-medium">{label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ===== 2. WHO WE ARE ===== */}
       <section className="py-16 md:py-24 bg-white relative overflow-hidden">
