@@ -79,7 +79,7 @@ export default function AboutPage() {
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80"
+                  src="/about.png"
                   alt="BrajProperty Projects"
                   className="w-full h-[400px] object-cover"
                 />

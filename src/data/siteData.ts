@@ -32,7 +32,7 @@ export const projects: Project[] = [
     statusColor: 'bg-green-500',
     description: 'An MVDA-approved residential colony near Bankey Bihari Temple. This project offers a blend of spiritual living and modern amenities, making it an ideal choice for families seeking a serene lifestyle in the heart of Vrindavan.',
     amenities: ['Gated Entry', 'Electricity', 'CC Roads', 'Street Lights', 'STP', 'Temple', 'Park', '24/7 Security', 'Water Supply'],
-    image: '/projects/krishna-gaur-city-1.jpeg',
+    image: '/projects/krishna-gaur-city-t.png',
     gallery: [
       '/projects/krishna-gaur-city-1.jpeg',
       '/projects/krishna-gaur-city-2.jpeg',
@@ -53,7 +53,7 @@ export const projects: Project[] = [
     statusColor: 'bg-green-500',
     description: 'Where devotion meets peaceful living with comfort and positivity. A perfect destination for those who seek harmony between spiritual living and modern comforts in the heart of Vrindavan.',
     amenities: ['Gated Entry', 'Electricity', 'CC Roads', 'Street Lights', 'STP', 'Temple', 'Park', '24/7 Security', 'Water Supply'],
-    image: '/projects/bankey-bihari-kunj-1.jpeg',
+    image: '/projects/bankey-bihari-kunj-t.png',
     gallery: [
       '/projects/bankey-bihari-kunj-1.jpeg',
       '/projects/bankey-bihari-kunj-2.jpeg',
@@ -74,7 +74,7 @@ export const projects: Project[] = [
     statusColor: 'bg-yellow-500',
     description: 'A devotion-inspired commercial development with strong future growth. Strategically located near Chaar Dham, this project promises excellent returns for investors looking at commercial opportunities in Vrindavan.',
     amenities: ['Gated Entry', 'Electricity', 'CC Roads', 'Street Lights', 'STP', 'Temple', 'Park', '24/7 Security', 'Water Supply'],
-    image: '/projects/bankey-bihari-greens-1.jpeg',
+    image: '/projects/bankey-bihari-greens-t.png',
     gallery: [
       '/projects/bankey-bihari-greens-1.jpeg',
       '/projects/bankey-bihari-greens-2.jpeg',
@@ -94,7 +94,7 @@ export const projects: Project[] = [
     statusColor: 'bg-yellow-500',
     description: 'A premium project combining devotion, nature, and appreciation potential. Located on the scenic Govardhan Road, this project offers a unique opportunity to own property in one of the most spiritually significant areas.',
     amenities: ['Gated Entry', 'Electricity', 'CC Roads', 'Street Lights', 'STP', 'Temple', 'Park', '24/7 Security', 'Water Supply'],
-    image: '/projects/braj-anand-vatika-1.jpeg',
+    image: '/projects/braj-anand-vatika-t.png',
     gallery: [
       '/projects/braj-anand-vatika-1.jpeg',
       '/projects/braj-anand-vatika-2.jpeg',
@@ -179,15 +179,15 @@ export const galleryImages = [
 
 export const managementTeam = [
   {
-    name: 'Shri Ramesh Ji',
+    name: 'Punit Sharma',
     designation: 'Founder & Chairman',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&q=80',
-    bio: 'With over 20 years of experience in real estate, Shri Ramesh Ji founded BrajProperty with a vision to make Vrindavan accessible to devotees and investors alike.',
+    image: '/punit-sharma.png',
+    bio: 'With over 20 years of experience in real estate, Punit Sharma founded BrajProperty with a vision to make Vrindavan accessible to devotees and investors alike.',
   },
   {
-    name: 'Mohit Sharma',
+    name: 'Vinay Sharma',
     designation: 'Managing Director',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&q=80',
+    image: '/vinay-sharma.png',
     bio: 'A seasoned professional with deep knowledge of the Vrindavan property market, leading operations and client relationships.',
   },
   {

@@ -13,29 +13,29 @@ const heroSlides = [
     image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=90',
     badge: '🏡 MVDA Approved',
     title: 'Own Sacred Land in',
-    highlight: 'Vrindavan — Divine & Secure',
-    subtitle: 'MVDA-approved plots near Bankey Bihari & Prem Mandir. Clear titles, transparent process, and strong appreciation potential.'
+    highlight: 'Vrindavan Divine & Secure',
+    subtitle: 'MVDA-approved plots near Bankey Bihari & Prem Mandir. Clear titles.'
   },
   {
     image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1920&q=90',
     badge: '📈 25–40% Annual Appreciation',
     title: 'Premium Plots Starting at',
     highlight: '₹5,000/sq.yd — Limited',
-    subtitle: "Invest in Vrindavan's fastest-growing corridors. 25–40% annual appreciation backed by 100+ happy families."
+    subtitle: "25–40% annual appreciation backed by 100+ happy families."
   },
   {
     image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1920&q=90',
     badge: '🌟 Premium Locations',
     title: 'Build Your Dream Home',
     highlight: "In Krishna's Divine City",
-    subtitle: 'Residential and investment plots with flexible EMI options, easy documentation, and dedicated support at every step.'
+    subtitle: 'Residential and investment plots with flexible EMI options.'
   },
   {
     image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1920&q=90',
     badge: '🤝 100+ Happy Families',
     title: 'Trusted by Families',
     highlight: 'Across 4 Premium Projects',
-    subtitle: 'From site visit to registry — we handle everything. Your peace of mind is our highest priority.'
+    subtitle: 'Your peace of mind is our highest priority.'
   }
 ];
 
