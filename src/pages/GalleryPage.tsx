@@ -113,16 +113,7 @@ export default function GalleryPage() {
         </div>
       )}
 
-      {/* CTA */}
-      <section className="py-16 bg-gradient-to-r from-saffron-500 to-temple-600 text-white text-center">
-        <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-3xl font-heading font-bold mb-3">Want to See More?</h2>
-          <p className="text-saffron-100 mb-6">{TAGLINE}</p>
-          <a href="/contact" className="btn-primary bg-white text-saffron-600 hover:bg-gray-100">
-            Book a Site Visit
-          </a>
-        </div>
-      </section>
+
     </div>
   );
 }

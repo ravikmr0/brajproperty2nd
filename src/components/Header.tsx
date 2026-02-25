@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, Search } from 'lucide-react';
-// import { PHONE_NUMBER, TAGLINE } from '../data/siteData';
+import { Menu, X, Search, Phone } from 'lucide-react';
+import { PHONE_NUMBER } from '../data/siteData';
 
 const navLinks = [
   { label: 'Home', path: '/' },
@@ -17,6 +17,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchOpen, setSearchOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -28,6 +29,7 @@ export default function Header() {
 
   useEffect(() => {
     setIsOpen(false);
+    setSearchOpen(false);
   }, [location]);
 
   const handleSearch = (e: React.FormEvent) => {
@@ -36,92 +38,147 @@ export default function Header() {
       navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
       setSearchQuery('');
       setIsOpen(false);
+      setSearchOpen(false);
     }
   };
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-white/90 backdrop-blur-sm'
+      isScrolled
+        ? 'bg-white/98 backdrop-blur-xl shadow-[0_2px_24px_rgba(0,0,0,0.08)]'
+        : 'bg-white/95 backdrop-blur-md shadow-sm'
     }`}>
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20 gap-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between h-16 md:h-[70px] gap-3">
+
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group flex-shrink-0">
-            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow bg-white">
-              <img
-                src="/logo.png"
-                alt="BrajProperty"
-                className="w-full h-full object-cover"
-              />
+          <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0">
+            <div className="w-9 h-9 md:w-11 md:h-11 rounded-full overflow-hidden shadow-md ring-2 ring-saffron-100 group-hover:ring-saffron-300 transition-all duration-200">
+              <img src="/logo.png" alt="BrajProperty" className="w-full h-full object-cover" />
             </div>
-            <div className="hidden lg:block">
-              <h1 className="text-lg md:text-xl font-heading font-bold text-gray-900 leading-tight">
+            <div>
+              <h1 className="text-base md:text-lg font-heading font-bold text-gray-900 leading-none">
                 Braj<span className="text-saffron-500">Property</span>
               </h1>
-              <p className="text-[10px] text-gray-500 -mt-0.5">Your Gateway to Vrindavan</p>
+              <p className="text-[9px] md:text-[10px] text-gray-400 mt-0.5 font-medium tracking-wide">Your Gateway to Vrindavan</p>
             </div>
           </Link>
 
-          {/* Search Bar - All screen sizes */}
-          <form onSubmit={handleSearch} className="flex items-center flex-1 max-w-xs">
-            <div className="relative w-full">
-              <input
-                type="text"
-                placeholder="Search projects, locations..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-4 py-2 pl-10 pr-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-saffron-500 focus:border-transparent text-sm"
-              />
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
-            </div>
-          </form>
-
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-0.5">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                className={`relative px-3 py-2 rounded-lg text-[13px] font-medium transition-all duration-200 ${
                   location.pathname === link.path
-                    ? 'text-gray-900 bg-saffron-50'
-                    : 'text-gray-700 hover:text-saffron-600 hover:bg-saffron-50/50'
+                    ? 'text-saffron-600 bg-saffron-50'
+                    : 'text-gray-600 hover:text-saffron-600 hover:bg-saffron-50/60'
                 }`}
               >
                 {link.label}
+                {location.pathname === link.path && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-saffron-500" />
+                )}
               </Link>
             ))}
           </nav>
 
-          {/* Menu Toggle */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors flex-shrink-0"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Right Actions */}
+          <div className="flex items-center gap-2">
+            {/* Search toggle (desktop) */}
+            <div className="hidden md:flex items-center">
+              {searchOpen ? (
+                <form onSubmit={handleSearch} className="flex items-center">
+                  <div className="relative">
+                    <input
+                      autoFocus
+                      type="text"
+                      placeholder="Search projects..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="w-52 px-4 py-2 pl-9 rounded-xl border border-saffron-200 focus:outline-none focus:ring-2 focus:ring-saffron-400 focus:border-transparent text-sm bg-white"
+                    />
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400" />
+                  </div>
+                  <button type="button" onClick={() => setSearchOpen(false)} className="ml-2 p-1.5 rounded-lg hover:bg-gray-100">
+                    <X className="w-4 h-4 text-gray-500" />
+                  </button>
+                </form>
+              ) : (
+                <button
+                  onClick={() => setSearchOpen(true)}
+                  className="p-2 rounded-lg text-gray-500 hover:text-saffron-600 hover:bg-saffron-50 transition-all duration-200"
+                  aria-label="Search"
+                >
+                  <Search className="w-4.5 h-4.5" />
+                </button>
+              )}
+            </div>
+
+            {/* Call CTA (desktop) */}
+            <a
+              href={`tel:${PHONE_NUMBER}`}
+              className="hidden md:inline-flex items-center gap-1.5 bg-saffron-500 hover:bg-saffron-600 text-white text-xs font-semibold px-4 py-2 rounded-xl transition-all duration-200 shadow-sm hover:shadow-md"
+            >
+              <Phone className="w-3.5 h-3.5" />
+              Call Now
+            </a>
+
+            {/* Mobile menu toggle */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="lg:hidden p-2 rounded-xl hover:bg-gray-100 transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X className="w-5 h-5 text-gray-700" /> : <Menu className="w-5 h-5 text-gray-700" />}
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Mobile Nav */}
       <div className={`lg:hidden transition-all duration-300 overflow-hidden ${
-        isOpen ? 'max-h-[500px] border-t' : 'max-h-0'
+        isOpen ? 'max-h-[600px] border-t border-gray-100' : 'max-h-0'
       }`}>
-        <div className="bg-white px-4 py-3 space-y-1">
+        <div className="bg-white px-4 py-4 space-y-1">
+          {/* Mobile search */}
+          <form onSubmit={handleSearch} className="mb-3">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search projects, locations..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full px-4 py-2.5 pl-9 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-saffron-400 text-sm bg-gray-50"
+              />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+            </div>
+          </form>
+
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`block px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+              className={`flex items-center px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
                 location.pathname === link.path
-                  ? 'text-saffron-600 bg-saffron-50'
+                  ? 'text-saffron-600 bg-saffron-50 font-semibold'
                   : 'text-gray-700 hover:text-saffron-600 hover:bg-saffron-50/50'
               }`}
             >
               {link.label}
             </Link>
           ))}
+
+          <div className="pt-2">
+            <a
+              href={`tel:${PHONE_NUMBER}`}
+              className="flex items-center justify-center gap-2 w-full bg-saffron-500 hover:bg-saffron-600 text-white font-semibold py-3 rounded-xl transition-colors"
+            >
+              <Phone className="w-4 h-4" />
+              Call Now
+            </a>
+          </div>
         </div>
       </div>
     </header>

@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import {
-  Phone, MapPin, Download, ArrowRight, Shield, FileCheck, TrendingUp, CreditCard, Building2, Star,
-  CheckCircle2, ChevronRight, ChevronLeft,
+  Phone, ArrowRight, Shield, FileCheck, TrendingUp, CreditCard, Building2, Star,
+  CheckCircle2, ChevronRight, ChevronLeft, Quote, MapPin,
 } from 'lucide-react';
 import { testimonials, PHONE_NUMBER } from '@/data/siteData';
 import LocationSlider from '@/components/LocationSlider';
@@ -11,25 +11,29 @@ import ProjectsSlider from '@/components/ProjectsSlider';
 const heroSlides = [
   {
     image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=90',
+    badge: '🏡 MVDA Approved',
     title: 'Own Sacred Land in',
     highlight: 'Vrindavan — Divine & Secure',
     subtitle: 'MVDA-approved plots near Bankey Bihari & Prem Mandir. Clear titles, transparent process, and strong appreciation potential.'
   },
   {
     image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1920&q=90',
+    badge: '📈 25–40% Annual Appreciation',
     title: 'Premium Plots Starting at',
-    highlight: '₹5,000/sq.yd — Limited Inventory',
+    highlight: '₹5,000/sq.yd — Limited',
     subtitle: "Invest in Vrindavan's fastest-growing corridors. 25–40% annual appreciation backed by 100+ happy families."
   },
   {
     image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1920&q=90',
+    badge: '🌟 Premium Locations',
     title: 'Build Your Dream Home',
     highlight: "In Krishna's Divine City",
     subtitle: 'Residential and investment plots with flexible EMI options, easy documentation, and dedicated support at every step.'
   },
   {
     image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1920&q=90',
-    title: 'Trusted by 100+ Families',
+    badge: '🤝 100+ Happy Families',
+    title: 'Trusted by Families',
     highlight: 'Across 4 Premium Projects',
     subtitle: 'From site visit to registry — we handle everything. Your peace of mind is our highest priority.'
   }
@@ -67,7 +71,7 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] sm:min-h-screen w-full flex items-center overflow-hidden">
+      <section className="relative min-h-[90vh] sm:min-h-screen w-full flex items-center overflow-hidden">
         {/* Background Slider */}
         <div className="absolute inset-0">
           {heroSlides.map((slide, index) => (
