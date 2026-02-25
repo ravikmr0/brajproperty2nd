@@ -184,21 +184,7 @@ export default function WhyInvestPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 bg-gradient-to-r from-saffron-500 to-temple-600 text-white text-center">
-        <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-3xl font-heading font-bold mb-3">Start Your Investment Journey</h2>
-          <p className="text-saffron-100 mb-6">{TAGLINE}</p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/projects" className="btn-primary bg-white text-saffron-600 hover:bg-gray-100">
-              Explore Projects <ArrowRight className="w-4 h-4 ml-2" />
-            </Link>
-            <Link to="/contact" className="btn-secondary border-white text-white hover:bg-white/10">
-              Book Site Visit
-            </Link>
-          </div>
-        </div>
-      </section>
+
     </div>
   );
 }

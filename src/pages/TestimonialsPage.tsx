@@ -94,16 +94,7 @@ export default function TestimonialsPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 bg-gradient-to-r from-saffron-500 to-temple-600 text-white text-center">
-        <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-3xl font-heading font-bold mb-3">Join Our Happy Family</h2>
-          <p className="text-saffron-100 mb-6">{TAGLINE}</p>
-          <Link to="/contact" className="btn-primary bg-white text-saffron-600 hover:bg-gray-100">
-            Start Your Journey Today
-          </Link>
-        </div>
-      </section>
+
     </div>
   );
 }
