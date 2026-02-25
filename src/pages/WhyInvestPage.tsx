@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { TrendingUp, MapPin, Building2, Heart, IndianRupee, Users, BarChart3, ArrowRight } from 'lucide-react';
 import { TAGLINE } from '../data/siteData';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 export default function WhyInvestPage() {
+  usePageTitle('Why Invest in Vrindavan Real Estate | High ROI | BrajProperty');
   return (
     <div>
 

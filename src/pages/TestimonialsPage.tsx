@@ -1,8 +1,10 @@
 import { Star, Quote } from 'lucide-react';
 import { testimonials, TAGLINE } from '../data/siteData';
 import { Link } from 'react-router-dom';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 export default function TestimonialsPage() {
+  usePageTitle('Client Testimonials – Trusted by Investors in Vrindavan | BrajProperty');
   return (
     <div>
       {/* Hero */}

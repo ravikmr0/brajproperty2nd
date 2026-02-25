@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { usePageTitle } from '@/hooks/usePageTitle';
 import { MapPin, ChevronRight, Zap, Award, Home, Star, TrendingUp, Shield, Sparkles, Building2, ArrowDown, CheckCircle2 } from 'lucide-react';
 import { projects, TAGLINE } from '@/data/siteData';
 import QuotePopup from '@/components/QuotePopup';
@@ -38,6 +39,7 @@ function AnimatedCounter({ target, suffix = '' }: { target: number; suffix?: str
 }
 
 export default function ProjectsPage() {
+  usePageTitle('Residential Plots in Vrindavan – All Projects | BrajProperty');
   const [isQuotePopupOpen, setIsQuotePopupOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<string>('');
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
