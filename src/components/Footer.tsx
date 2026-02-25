@@ -24,12 +24,12 @@ export default function Footer() {
     <footer className="bg-gray-900 text-gray-300">
       {/* Top CTA */}
       <div className="bg-gradient-to-r from-saffron-600 to-temple-600">
-        <div className="max-w-7xl mx-auto px-4 py-8 md:py-10 text-center">
-          <h3 className="text-2xl md:text-3xl font-heading font-bold text-white mb-3">
+        <div className="max-w-7xl mx-auto px-4 py-6 md:py-8 text-center">
+          <h3 className="text-xl md:text-2xl font-heading font-bold text-white mb-2">
             Ready to Own Your Dream Plot in Vrindavan?
           </h3>
-          <p className="text-saffron-100 mb-4 text-lg">{TAGLINE}</p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <p className="text-saffron-100 mb-3 text-base">{TAGLINE}</p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a href={`tel:${PHONE_NUMBER}`} className="btn-primary bg-white text-saffron-600 hover:bg-gray-100">
               <Phone className="w-4 h-4 mr-2" />
               Call Now
@@ -42,8 +42,8 @@ export default function Footer() {
       </div>
 
       {/* Main Footer */}
-      <div className="max-w-7xl mx-auto px-4 py-10 md:py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8">
+      <div className="max-w-7xl mx-auto px-4 py-8 md:py-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6">
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-4">
@@ -127,7 +127,7 @@ export default function Footer() {
 
       {/* Bottom */}
       <div className="border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-gray-500">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-gray-500">
           <p>&copy; {new Date().getFullYear()} BrajProperty.in. All rights reserved.</p>
           <p className="text-saffron-400 font-medium">{TAGLINE}</p>
         </div>

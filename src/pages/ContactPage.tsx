@@ -122,7 +122,7 @@ export default function ContactPage() {
   return (
     <div className="bg-white">
       {/* ═══════════════════ HERO SECTION ═══════════════════ */}
-      <section className="relative pt-28 pb-20 overflow-hidden">
+      <section className="relative pt-24 pb-16 overflow-hidden">
         {/* Gradient background */}
         <div className="absolute inset-0 bg-gradient-to-br from-saffron-600 via-saffron-500 to-temple-500" />
         {/* Decorative shapes */}
@@ -133,14 +133,14 @@ export default function ContactPage() {
 
         <div className="relative max-w-7xl mx-auto px-4 text-center">
           <RevealSection>
-            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/20 rounded-full px-5 py-2 mb-6">
+            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/20 rounded-full px-5 py-2 mb-4">
               <MessageCircle className="w-4 h-4 text-white" />
               <span className="text-white/90 font-medium text-sm">We're Here to Help</span>
             </div>
           </RevealSection>
 
           <RevealSection delay={100}>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-4 leading-tight">
               Let's Build Your
               <br />
               <span className="relative inline-block">
@@ -151,7 +151,7 @@ export default function ContactPage() {
           </RevealSection>
 
           <RevealSection delay={200}>
-            <p className="text-lg md:text-xl text-white/85 max-w-2xl mx-auto mb-10 leading-relaxed">
+            <p className="text-lg md:text-xl text-white/85 max-w-2xl mx-auto mb-6 leading-relaxed">
               Reach out to our dedicated team for expert guidance on investing in the
               sacred land of Vrindavan. Your spiritual home awaits.
             </p>
@@ -196,8 +196,8 @@ export default function ContactPage() {
       <section className="relative -mt-2 z-10">
         <div className="max-w-5xl mx-auto px-4">
           <RevealSection>
-            <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 md:p-8">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-5 md:p-6">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                 {[
                   { icon: Building2, value: '4+', label: 'Active Projects', color: 'text-saffron-500 bg-saffron-50' },
                   { icon: Users, value: '500+', label: 'Happy Families', color: 'text-temple-500 bg-temple-50' },
@@ -219,15 +219,15 @@ export default function ContactPage() {
       </section>
 
       {/* ═══════════════════ CONTACT INFO + FORM ═══════════════════ */}
-      <section className="py-16 md:py-24">
+      <section className="py-10 md:py-14">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-5 gap-10 lg:gap-14">
+          <div className="grid lg:grid-cols-5 gap-8 lg:gap-10">
             {/* ─── LEFT: Contact Info ─── */}
             <div className="lg:col-span-2">
               <RevealSection>
-                <div className="mb-8">
+                <div className="mb-6">
                   <span className="text-saffron-500 font-semibold text-sm uppercase tracking-wider">Contact Info</span>
-                  <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-2 mb-4">
+                  <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-1.5 mb-3">
                     Let's <span className="text-saffron-500">Connect</span>
                   </h2>
                   <p className="text-gray-600 leading-relaxed">
@@ -237,7 +237,7 @@ export default function ContactPage() {
               </RevealSection>
 
               {/* Contact cards */}
-              <div className="space-y-4 mb-8">
+              <div className="space-y-3 mb-6">
                 {[
                   {
                     href: `tel:${PHONE_NUMBER}`,
@@ -547,12 +547,12 @@ export default function ContactPage() {
       </section>
 
       {/* ═══════════════════ MAP SECTION ═══════════════════ */}
-      <section className="py-16 bg-gradient-to-b from-white via-saffron-50/30 to-white">
+      <section className="py-10 bg-gradient-to-b from-white via-saffron-50/30 to-white">
         <div className="max-w-7xl mx-auto px-4">
           <RevealSection>
-            <div className="text-center mb-10">
+            <div className="text-center mb-6">
               <span className="text-saffron-500 font-semibold text-sm uppercase tracking-wider">Our Location</span>
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-2 mb-3">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-1.5 mb-2">
                 Find Us in <span className="text-saffron-500">Vrindavan</span>
               </h2>
               <p className="text-gray-600 max-w-xl mx-auto">
