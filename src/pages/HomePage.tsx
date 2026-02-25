@@ -67,7 +67,7 @@ export default function HomePage() {
   return (
     <div>
       {/* Enhanced Hero Section with Slider */}
-      <section className="relative min-h-[90vh] flex items-center pt-24 pb-10 overflow-hidden">
+      <section className="relative h-screen w-full flex items-center overflow-hidden">
         {/* Background Slider */}
         <div className="absolute inset-0">
           {heroSlides.map((slide, index) => (
@@ -77,13 +77,12 @@ export default function HomePage() {
                 index === currentSlide ? 'opacity-100' : 'opacity-0'
               }`}
             >
-              <img
-                src={slide.image}
-                alt={slide.title}
-                className="w-full h-full object-cover"
+              <div
+                className="w-full h-full bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: `url(${slide.image})` }}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
             </div>
           ))}
           <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-saffron-400/20 blur-3xl" />
@@ -93,118 +92,134 @@ export default function HomePage() {
         {/* Navigation Arrows */}
         <button
           onClick={prevSlide}
-          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-all group"
+          className="absolute left-3 sm:left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-all group"
           aria-label="Previous slide"
         >
-          <ChevronLeft className="w-6 h-6 md:w-7 md:h-7 text-white group-hover:scale-110 transition-transform" />
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white group-hover:scale-110 transition-transform" />
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-all group"
+          className="absolute right-3 sm:right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-all group"
           aria-label="Next slide"
         >
-          <ChevronRight className="w-6 h-6 md:w-7 md:h-7 text-white group-hover:scale-110 transition-transform" />
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white group-hover:scale-110 transition-transform" />
         </button>
 
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 w-full">
-          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
-            <div className="max-w-3xl">
-            {/* Dynamic Heading based on current slide */}
-            {(heroSlides[currentSlide].title || heroSlides[currentSlide].highlight) && (
-              <h1 className="text-3xl md:text-[42px] lg:text-[54px] font-heading font-semibold text-white mb-5 animate-fade-in-up animate-delay-200" style={{ lineHeight: '1.18', letterSpacing: '0.4px' }}>
-                {heroSlides[currentSlide].title}
-                {heroSlides[currentSlide].highlight && (
-                  <span className="text-saffron-900 block mt-2">{heroSlides[currentSlide].highlight}</span>
-                )}
-              </h1>
-            )}
-
-            <div className="max-w-[520px]">
-              {heroSlides[currentSlide].subtitle && (
-                <p className="text-[15px] md:text-[17px] text-gray-100/95 mb-3 animate-fade-in-up animate-delay-400" style={{ lineHeight: '1.6' }}>
-                  {heroSlides[currentSlide].subtitle}
-                </p>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full pt-20 md:pt-24">
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 md:gap-10 items-center">
+            {/* Left Column - Text Content */}
+            <div className="max-w-3xl text-center lg:text-left">
+              {/* Dynamic Heading based on current slide */}
+              {(heroSlides[currentSlide].title || heroSlides[currentSlide].highlight) && (
+                <h1 className="text-2xl sm:text-3xl md:text-[42px] lg:text-[54px] font-heading font-semibold text-white mb-4 md:mb-5 animate-fade-in-up animate-delay-200" style={{ lineHeight: '1.18', letterSpacing: '0.4px' }}>
+                  {heroSlides[currentSlide].title}
+                  {heroSlides[currentSlide].highlight && (
+                    <span className="text-saffron-900 block mt-2">{heroSlides[currentSlide].highlight}</span>
+                  )}
+                </h1>
               )}
-            </div>
 
-          </div>
-
-          {/* Quick Facts Panel */}
-          <div className="hidden lg:block">
-            <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 shadow-xl animate-fade-in-up animate-delay-400">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-12 h-12 rounded-xl bg-saffron-900/20 flex items-center justify-center">
-                  <Shield className="w-6 h-6 text-saffron-300" />
-                </div>
-                <div>
-                  <div className="text-white font-semibold text-lg">Trusted & Approved</div>
-                  <div className="text-gray-200 text-sm">Clear titles, MVDA compliance</div>
-                </div>
+              <div className="max-w-[520px] mx-auto lg:mx-0">
+                {heroSlides[currentSlide].subtitle && (
+                  <p className="text-sm sm:text-[15px] md:text-[17px] text-gray-100/95 mb-3 animate-fade-in-up animate-delay-400" style={{ lineHeight: '1.6' }}>
+                    {heroSlides[currentSlide].subtitle}
+                  </p>
+                )}
               </div>
 
-              <div className="space-y-4">
-                {[
-                  { icon: MapPin, title: 'Prime Connectivity', desc: 'Near Bankey Bihari, Prem Mandir, ISKCON' },
-                  { icon: TrendingUp, title: 'High Appreciation', desc: 'Strong long-term growth potential' },
-                  { icon: FileCheck, title: 'Secure Documentation', desc: 'Transparent paperwork & registration' },
-                ].map(({ icon: Icon, title, desc }) => (
-                  <div key={title} className="flex items-start gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center mt-0.5">
-                      <Icon className="w-5 h-5 text-saffron-300" />
-                    </div>
-                    <div>
-                      <div className="text-white font-semibold text-sm">{title}</div>
-                      <div className="text-gray-200 text-xs leading-relaxed">{desc}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-6 flex items-center gap-3">
+              {/* Mobile/Tablet CTA Buttons */}
+              <div className="flex flex-col sm:flex-row items-center gap-3 mt-5 lg:hidden">
                 <Link
                   to="/contact"
-                  className="flex-1 text-center bg-white/15 hover:bg-white/25 text-slate-900 text-sm font-semibold py-2.5 rounded-lg transition-all"
+                  className="w-full sm:w-auto text-center bg-saffron-500 hover:bg-saffron-600 text-white text-sm font-semibold px-6 py-3 rounded-lg transition-all shadow-lg"
                 >
                   Book Site Visit
                 </Link>
                 <Link
                   to="/projects"
-                  className="flex-1 text-center border border-white/30 text-white text-sm font-semibold py-2.5 rounded-lg hover:bg-white/15 transition-all"
+                  className="w-full sm:w-auto text-center border border-white/40 text-white text-sm font-semibold px-6 py-3 rounded-lg hover:bg-white/15 transition-all"
                 >
                   Explore Plots
                 </Link>
               </div>
             </div>
-          </div>
+
+            {/* Quick Facts Panel - Desktop Only */}
+            <div className="hidden lg:block">
+              <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 shadow-xl animate-fade-in-up animate-delay-400">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-12 h-12 rounded-xl bg-saffron-900/20 flex items-center justify-center">
+                    <Shield className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <div className="text-white font-semibold text-lg">Trusted & Approved</div>
+                    <div className="text-gray-200 text-sm">Clear titles, MVDA compliance</div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  {[
+                    { icon: MapPin, title: 'Prime Connectivity', desc: 'Near Bankey Bihari, Prem Mandir, ISKCON' },
+                    { icon: TrendingUp, title: 'High Appreciation', desc: 'Strong long-term growth potential' },
+                    { icon: FileCheck, title: 'Secure Documentation', desc: 'Transparent paperwork & registration' },
+                  ].map(({ icon: Icon, title, desc }) => (
+                    <div key={title} className="flex items-start gap-3">
+                      <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center mt-0.5">
+                        <Icon className="w-5 h-5 text-white" />
+                      </div>
+                      <div>
+                        <div className="text-white font-semibold text-sm">{title}</div>
+                        <div className="text-gray-200 text-xs leading-relaxed">{desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 flex items-center gap-3">
+                  <Link
+                    to="/contact"
+                    className="flex-1 text-center bg-white/15 hover:bg-white/25 text-white text-sm font-semibold py-2.5 rounded-lg transition-all"
+                  >
+                    Book Site Visit
+                  </Link>
+                  <Link
+                    to="/projects"
+                    className="flex-1 text-center border border-white/30 text-white text-sm font-semibold py-2.5 rounded-lg hover:bg-white/15 transition-all"
+                  >
+                    Explore Plots
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Bottom Badges */}
-        <div className="absolute bottom-10 md:bottom-12 left-1/2 -translate-x-1/2 z-20 w-full px-4">
-          <div className="mx-auto flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-6">
+        <div className="absolute bottom-6 sm:bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 z-20 w-full px-4">
+          <div className="mx-auto flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-4 md:gap-6">
             {['MVDA Approved', '100+ Happy Families', '4 Premium Projects'].map((badge) => (
               <div
                 key={badge}
-                className="flex items-center gap-2 bg-white/15 backdrop-blur-md rounded-[30px] px-5 py-3 border border-white/20 shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(255,255,255,0.12)]"
+                className="flex items-center gap-2 bg-white/15 backdrop-blur-md rounded-[30px] px-4 py-2 sm:px-5 sm:py-3 border border-white/20 shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(255,255,255,0.12)]"
               >
-                <CheckCircle2 className="w-4 h-4 text-green-400" />
-                <span className="text-white text-sm font-medium">{badge}</span>
+                <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-400" />
+                <span className="text-white text-xs sm:text-sm font-medium">{badge}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Slide Indicators */}
-        <div className="absolute bottom-24 md:bottom-28 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+        <div className="absolute bottom-16 sm:bottom-20 md:bottom-24 left-1/2 -translate-x-1/2 z-20 flex gap-2 sm:gap-3">
           {heroSlides.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
               className={`transition-all ${
                 index === currentSlide
-                  ? 'w-12 h-3 bg-saffron-400'
-                  : 'w-3 h-3 bg-white/40 hover:bg-white/60'
+                  ? 'w-8 sm:w-12 h-2.5 sm:h-3 bg-saffron-400'
+                  : 'w-2.5 sm:w-3 h-2.5 sm:h-3 bg-white/40 hover:bg-white/60'
               } rounded-full`}
               aria-label={`Go to slide ${index + 1}`}
             />

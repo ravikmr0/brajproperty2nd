@@ -5,16 +5,6 @@ import { TAGLINE } from '../data/siteData';
 export default function WhyInvestPage() {
   return (
     <div>
-      {/* Hero */}
-      <section className="relative pt-28 pb-10 bg-gradient-to-br from-saffron-50 via-white to-temple-50">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <span className="text-saffron-500 font-semibold text-sm uppercase tracking-wider">Investment Guide</span>
-          <h1 className="section-title mt-2 text-4xl md:text-5xl">
-            Why Invest in <span className="text-saffron-500">Vrindavan?</span>
-          </h1>
-          <p className="section-subtitle mt-4">Vrindavan is one of India's fastest-growing spiritual and real estate hubs</p>
-        </div>
-      </section>
 
       {/* Key Highlights - Premium Design */}
       <section className="py-12 md:py-16 relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-saffron-50/30">
