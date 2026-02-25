@@ -11,27 +11,27 @@ import ProjectsSlider from '@/components/ProjectsSlider';
 const heroSlides = [
   {
     image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=90',
-    title: '',
-    highlight: '',
-    subtitle: ''
+    title: 'Own Sacred Land in',
+    highlight: 'Vrindavan — Divine & Secure',
+    subtitle: 'MVDA-approved plots near Bankey Bihari & Prem Mandir. Clear titles, transparent process, and strong appreciation potential.'
   },
   {
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=90',
-    title: '',
-    highlight: '',
-    subtitle: ''
+    image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1920&q=90',
+    title: 'Premium Plots Starting at',
+    highlight: '₹5,000/sq.yd — Limited Inventory',
+    subtitle: "Invest in Vrindavan's fastest-growing corridors. 25–40% annual appreciation backed by 100+ happy families."
   },
   {
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=90',
-    title: '',
-    highlight: '',
-    subtitle: ''
+    image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1920&q=90',
+    title: 'Build Your Dream Home',
+    highlight: "In Krishna's Divine City",
+    subtitle: 'Residential and investment plots with flexible EMI options, easy documentation, and dedicated support at every step.'
   },
   {
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=90',
-    title: '',
-    highlight: '',
-    subtitle: ''
+    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1920&q=90',
+    title: 'Trusted by 100+ Families',
+    highlight: 'Across 4 Premium Projects',
+    subtitle: 'From site visit to registry — we handle everything. Your peace of mind is our highest priority.'
   }
 ];
 
@@ -66,8 +66,8 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* Enhanced Hero Section with Slider */}
-      <section className="relative h-screen w-full flex items-center overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative min-h-[85vh] sm:min-h-screen w-full flex items-center overflow-hidden">
         {/* Background Slider */}
         <div className="absolute inset-0">
           {heroSlides.map((slide, index) => (
@@ -81,99 +81,131 @@ export default function HomePage() {
                 className="w-full h-full bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(${slide.image})` }}
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-b sm:bg-gradient-to-r from-black/80 via-black/60 to-black/40 sm:to-black/30" />
             </div>
           ))}
-          <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-saffron-400/20 blur-3xl" />
-          <div className="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-temple-200/20 blur-3xl" />
         </div>
 
-        {/* Navigation Arrows */}
+        {/* Navigation Arrows — hidden on mobile for cleaner look */}
         <button
           onClick={prevSlide}
-          className="absolute left-2 sm:left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-all group"
+          className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-20 hidden sm:flex w-10 h-10 bg-white/10 hover:bg-white/25 backdrop-blur-sm border border-white/25 rounded-full items-center justify-center transition-all duration-200 group"
           aria-label="Previous slide"
         >
-          <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white group-hover:scale-110 transition-transform" />
+          <ChevronLeft className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-2 sm:right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-all group"
+          className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-20 hidden sm:flex w-10 h-10 bg-white/10 hover:bg-white/25 backdrop-blur-sm border border-white/25 rounded-full items-center justify-center transition-all duration-200 group"
           aria-label="Next slide"
         >
-          <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white group-hover:scale-110 transition-transform" />
+          <ChevronRight className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
         </button>
 
-        {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full pt-20 md:pt-24">
-          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 md:gap-10 items-center">
-            {/* Left Column - Text Content */}
-            <div className="max-w-3xl text-center lg:text-left">
-              {/* Dynamic Heading based on current slide */}
-              {(heroSlides[currentSlide].title || heroSlides[currentSlide].highlight) && (
-                <h1 className="text-2xl sm:text-3xl md:text-[42px] lg:text-[54px] font-heading font-semibold text-white mb-4 md:mb-5 animate-fade-in-up animate-delay-200" style={{ lineHeight: '1.18', letterSpacing: '0.4px' }}>
-                  {heroSlides[currentSlide].title}
-                  {heroSlides[currentSlide].highlight && (
-                    <span className="text-saffron-900 block mt-2">{heroSlides[currentSlide].highlight}</span>
-                  )}
-                </h1>
-              )}
+        {/* Main Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 w-full pt-28 pb-24 sm:pt-28 sm:pb-36">
+          <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-8 md:gap-12 items-center">
 
-              <div className="max-w-[520px] mx-auto lg:mx-0">
-                {heroSlides[currentSlide].subtitle && (
-                  <p className="text-sm sm:text-[15px] md:text-[17px] text-gray-100/95 mb-3 animate-fade-in-up animate-delay-400" style={{ lineHeight: '1.6' }}>
-                    {heroSlides[currentSlide].subtitle}
-                  </p>
-                )}
+            {/* Left Column — Text Content */}
+            <div className="text-center lg:text-left">
+              {/* Trust badge */}
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-3.5 py-1.5 mb-5 sm:mb-5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-green-400 flex-shrink-0" />
+                <span className="text-white text-[11px] sm:text-sm font-medium tracking-wide">MVDA Approved · Legally Verified</span>
               </div>
 
-              {/* Mobile/Tablet CTA Buttons - Hidden */}
+              {/* Headline — shorter on mobile */}
+              <h1 className="text-[28px] sm:text-4xl md:text-5xl lg:text-[56px] font-heading font-bold text-white mb-3 sm:mb-4 leading-[1.15] tracking-tight">
+                {heroSlides[currentSlide].title}
+                {heroSlides[currentSlide].highlight && (
+                  <span className="block text-saffron-400 mt-1">{heroSlides[currentSlide].highlight}</span>
+                )}
+              </h1>
+
+              {/* Subtitle — hidden on mobile for clean look */}
+              {heroSlides[currentSlide].subtitle && (
+                <p className="hidden sm:block text-base md:text-lg text-gray-200/90 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                  {heroSlides[currentSlide].subtitle}
+                </p>
+              )}
+
+              {/* CTA Buttons — hidden on mobile */}
+              <div className="hidden sm:flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center gap-2 bg-saffron-500 hover:bg-saffron-400 text-white font-bold text-base px-6 py-3.5 rounded-xl shadow-lg shadow-saffron-500/30 transition-all duration-200 hover:scale-105 hover:shadow-xl"
+                >
+                  <Phone className="w-4 h-4" />
+                  Book Free Site Visit
+                </Link>
+                <Link
+                  to="/projects"
+                  className="inline-flex items-center justify-center gap-2 border border-white/35 text-white font-semibold text-base px-6 py-3.5 rounded-xl backdrop-blur-sm hover:bg-white/15 transition-all duration-200"
+                >
+                  Explore Projects
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+
+              {/* Social proof — compact on mobile */}
+              <div className="mt-5 sm:mt-8 flex items-center gap-3 sm:gap-4 justify-center lg:justify-start">
+                <div className="flex items-center gap-1">
+                  {[1,2,3,4,5].map(i => (
+                    <Star key={i} className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-yellow-400 fill-yellow-400" />
+                  ))}
+                  <span className="text-white text-xs sm:text-sm ml-1 font-semibold">4.9/5</span>
+                </div>
+                <span className="text-white/20">·</span>
+                <span className="text-gray-300 text-xs sm:text-sm">100+ Families</span>
+                <span className="text-white/20">·</span>
+                <span className="text-gray-300 text-xs sm:text-sm">4 Projects</span>
+              </div>
             </div>
 
-            {/* Quick Facts Panel - Desktop Only */}
+            {/* Right Column — Quick Facts Card (lg+ only) */}
             <div className="hidden lg:block">
-              <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 shadow-xl animate-fade-in-up animate-delay-400">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-12 h-12 rounded-xl bg-saffron-900/20 flex items-center justify-center">
-                    <Shield className="w-6 h-6 text-white" />
+              <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-2xl">
+                <div className="flex items-center gap-3 mb-5 pb-4 border-b border-white/15">
+                  <div className="w-11 h-11 rounded-xl bg-saffron-500/25 flex items-center justify-center flex-shrink-0">
+                    <Shield className="w-5 h-5 text-saffron-300" />
                   </div>
                   <div>
-                    <div className="text-white font-semibold text-lg">Trusted & Approved</div>
-                    <div className="text-gray-200 text-sm">Clear titles, MVDA compliance</div>
+                    <div className="text-white font-bold text-base leading-tight">100% Trusted & Approved</div>
+                    <div className="text-gray-300 text-xs mt-0.5">Clear titles · MVDA compliant</div>
                   </div>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-3.5 mb-5">
                   {[
-                    { icon: MapPin, title: 'Prime Connectivity', desc: 'Near Bankey Bihari, Prem Mandir, ISKCON' },
-                    { icon: TrendingUp, title: 'High Appreciation', desc: 'Strong long-term growth potential' },
-                    { icon: FileCheck, title: 'Secure Documentation', desc: 'Transparent paperwork & registration' },
+                    { icon: MapPin, title: 'Prime Temple Connectivity', desc: 'Near Bankey Bihari, Prem Mandir, ISKCON' },
+                    { icon: TrendingUp, title: '25–40% Annual Appreciation', desc: `One of Vrindavan's fastest-growing zones` },
+                    { icon: FileCheck, title: 'Hassle-Free Documentation', desc: 'Transparent process & smooth registration' },
+                    { icon: CreditCard, title: 'Flexible Payment Plans', desc: 'Easy EMI options for all budgets' },
                   ].map(({ icon: Icon, title, desc }) => (
                     <div key={title} className="flex items-start gap-3">
-                      <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center mt-0.5">
-                        <Icon className="w-5 h-5 text-white" />
+                      <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center mt-0.5 flex-shrink-0">
+                        <Icon className="w-4 h-4 text-saffron-300" />
                       </div>
                       <div>
-                        <div className="text-white font-semibold text-sm">{title}</div>
-                        <div className="text-gray-200 text-xs leading-relaxed">{desc}</div>
+                        <div className="text-white font-semibold text-sm leading-snug">{title}</div>
+                        <div className="text-gray-300 text-xs leading-relaxed">{desc}</div>
                       </div>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-6 flex items-center gap-3">
+                <div className="flex items-center gap-3">
                   <Link
                     to="/contact"
-                    className="flex-1 text-center bg-white text-saffron-600 hover:bg-white/90 text-sm font-semibold py-2.5 rounded-lg transition-all"
+                    className="flex-1 text-center bg-saffron-500 hover:bg-saffron-400 text-white text-sm font-bold py-2.5 rounded-xl transition-all shadow-md"
                   >
-                    Book Site Visit
+                    📞 Book Site Visit
                   </Link>
                   <Link
                     to="/projects"
-                    className="flex-1 text-center border border-white/30 text-white text-sm font-semibold py-2.5 rounded-lg hover:bg-white/15 transition-all"
+                    className="flex-1 text-center border border-white/30 text-white text-sm font-semibold py-2.5 rounded-xl hover:bg-white/15 transition-all"
                   >
-                    Explore Plots
+                    View Plots →
                   </Link>
                 </div>
               </div>
@@ -181,32 +213,32 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Bottom Badges */}
-        <div className="absolute bottom-5 sm:bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 z-20 w-full px-3">
-          <div className="mx-auto flex flex-row justify-center gap-2 sm:gap-4 md:gap-6 flex-wrap">
-            {['MVDA Approved', '100+ Happy Families', '4 Premium Projects'].map((badge) => (
+        {/* Bottom Trust Badges — fewer on mobile */}
+        <div className="absolute bottom-5 sm:bottom-7 left-1/2 -translate-x-1/2 z-20 w-full px-4">
+          <div className="mx-auto flex flex-row justify-center gap-2 sm:gap-3 md:gap-5">
+            {['MVDA Approved', '100+ Happy Families', '4 Premium Projects', 'Vrindavan'].map((badge, idx) => (
               <div
                 key={badge}
-                className="flex items-center gap-1.5 bg-white/15 backdrop-blur-md rounded-[30px] px-3 py-1.5 sm:px-5 sm:py-3 border border-white/20 shadow-lg"
+                className={`flex items-center gap-1.5 bg-black/30 backdrop-blur-md rounded-full px-3 py-1.5 sm:px-4 sm:py-2 border border-white/15 ${idx >= 2 ? 'hidden sm:flex' : 'flex'}`}
               >
-                <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4 text-green-400 flex-shrink-0" />
-                <span className="text-white text-[11px] sm:text-sm font-medium whitespace-nowrap">{badge}</span>
+                <CheckCircle2 className="w-3 h-3 text-green-400 flex-shrink-0" />
+                <span className="text-white text-[10px] sm:text-xs font-medium whitespace-nowrap">{badge}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Slide Indicators */}
-        <div className="absolute bottom-16 sm:bottom-20 md:bottom-24 left-1/2 -translate-x-1/2 z-20 flex gap-1.5 sm:gap-3">
+        <div className="absolute bottom-14 sm:bottom-[72px] left-1/2 -translate-x-1/2 z-20 flex gap-1.5 sm:gap-2">
           {heroSlides.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`transition-all ${
+              className={`transition-all duration-300 rounded-full ${
                 index === currentSlide
-                  ? 'w-6 sm:w-12 h-2 sm:h-3 bg-saffron-400'
-                  : 'w-2 sm:w-3 h-2 sm:h-3 bg-white/40 hover:bg-white/60'
-              } rounded-full`}
+                  ? 'w-6 sm:w-8 h-1.5 sm:h-2 bg-saffron-400'
+                  : 'w-1.5 sm:w-2 h-1.5 sm:h-2 bg-white/35 hover:bg-white/60'
+              }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
