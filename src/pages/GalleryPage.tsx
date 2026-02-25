@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { galleryImages, TAGLINE } from '../data/siteData';
 import { X } from 'lucide-react';
 
@@ -13,6 +13,7 @@ const categories = [
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});
 
   const withBase = (src: string) => {
     if (src.startsWith('http://') || src.startsWith('https://')) return src;
@@ -24,6 +25,12 @@ export default function GalleryPage() {
   const filteredImages = activeCategory === 'All'
     ? galleryImages
     : galleryImages.filter((img) => img.category === activeCategory);
+
+  useEffect(() => {
+    filteredImages.forEach((img) => {
+      console.log('[Gallery] image src:', withBase(img.src));
+    });
+  }, [filteredImages]);
 
   return (
     <div>
@@ -66,11 +73,20 @@ export default function GalleryPage() {
                 onClick={() => setLightboxImage(img.src)}
                 className="relative rounded-xl overflow-hidden aspect-square group cursor-pointer"
               >
-                <img
-                  src={withBase(img.src)}
-                  alt={img.alt}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
+                {imageErrors[img.id] ? (
+                  <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-500 text-sm">
+                    Image failed to load
+                  </div>
+                ) : (
+                  <img
+                    src={withBase(img.src)}
+                    alt={img.alt}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    onError={() => setImageErrors((prev) => ({ ...prev, [img.id]: true }))}
+                  />
+                )}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-end p-4">
                   <span className="text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0 transition-transform">
                     {img.category}

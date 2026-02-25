@@ -164,7 +164,7 @@ export default function HomePage() {
               <div className="mt-6 flex items-center gap-3">
                 <Link
                   to="/contact"
-                  className="flex-1 text-center bg-white/15 hover:bg-white/25 text-white text-sm font-semibold py-2.5 rounded-lg transition-all"
+                  className="flex-1 text-center bg-white/15 hover:bg-white/25 text-slate-900 text-sm font-semibold py-2.5 rounded-lg transition-all"
                 >
                   Book Site Visit
                 </Link>
@@ -247,9 +247,9 @@ export default function HomePage() {
                 alt="About BrajProperty"
                 className="rounded-2xl shadow-xl w-full"
               />
-              <div className="absolute -bottom-6 -left-6 bg-saffron-900 text-white rounded-xl p-5 shadow-xl">
+              <div className="absolute -bottom-6 -left-6 bg-saffron-800 text-white rounded-xl p-5 shadow-xl">
                 <div className="text-3xl font-bold">10+</div>
-                <div className="text-sm text-saffron-100">Years Experience</div>
+                <div className="text-sm text-white">Years Experience</div>
               </div>
             </div>
           </div>
@@ -287,9 +287,9 @@ export default function HomePage() {
               { icon: TrendingUp, title: 'High Appreciation', desc: 'Vrindavan property values have seen 25-40% appreciation annually.' },
               { icon: Star, title: 'Trusted by 100+ Families', desc: 'Proven track record of delivering quality plots with complete satisfaction.' },
             ].map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-saffron-200 group">
-                <div className="w-14 h-14 bg-saffron-50 group-hover:bg-saffron-900 rounded-xl flex items-center justify-center mb-4 transition-colors">
-                  <Icon className="w-7 h-7 text-saffron-900 group-hover:text-white transition-colors" />
+              <div key={title} className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-temple-200 group">
+                <div className="w-14 h-14 bg-gold-100 group-hover:bg-temple-600 rounded-xl flex items-center justify-center mb-4 transition-colors">
+                  <Icon className="w-7 h-7 text-temple-700 group-hover:text-white transition-colors" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>

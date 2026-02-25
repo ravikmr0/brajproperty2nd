@@ -47,8 +47,12 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-saffron-500 to-temple-600 rounded-full flex items-center justify-center">
-                <span className="text-white font-heading font-bold text-lg">B</span>
+              <div className="w-10 h-10 rounded-full overflow-hidden bg-white">
+                <img
+                  src="/logo.png"
+                  alt="BrajProperty"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div>
                 <h3 className="text-lg font-heading font-bold text-white">

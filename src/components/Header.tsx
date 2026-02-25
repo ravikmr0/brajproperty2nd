@@ -49,8 +49,12 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-saffron-500 to-temple-600 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
-              <span className="text-white font-heading font-bold text-lg md:text-xl">B</span>
+            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow bg-white">
+              <img
+                src="/logo.png"
+                alt="BrajProperty"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="hidden sm:block">
               <h1 className="text-lg md:text-xl font-heading font-bold text-gray-900 leading-tight">

@@ -64,16 +64,16 @@ export default function LocationSlider() {
   }, [emblaApi]);
 
   return (
-    <div className="relative">
+    <div className="relative px-4 md:px-8 py-8">
       <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex gap-6">
+        <div className="flex -ml-6 md:-ml-8">
           {temples.map((temple, index) => (
             <div 
               key={index} 
-              className="flex-[0_0_100%] sm:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(25%-18px)] min-w-0"
+              className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 pl-6 md:pl-8"
             >
-              <div className="card group cursor-pointer h-full">
-                <div className="relative h-64 overflow-hidden rounded-xl">
+              <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 bg-white group cursor-pointer h-full">
+                <div className="relative h-64 overflow-hidden">
                   <img 
                     src={temple.img} 
                     alt={temple.name} 
