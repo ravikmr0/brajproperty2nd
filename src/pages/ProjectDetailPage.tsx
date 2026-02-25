@@ -1,13 +1,32 @@
 import { useParams, Link } from 'react-router-dom';
 import { MapPin, ArrowLeft, ExternalLink, Phone, CheckCircle2 } from 'lucide-react';
 import { projects, PHONE_NUMBER, WHATSAPP_NUMBER } from '../data/siteData';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+// Per-project SEO titles
+const projectTitles: Record<string, string> = {
+  'krishna-gaur-city': 'Krishna Gaur City – MVDA Plots in Vrindavan | BrajProperty',
+  'bankey-bihari-kunj': 'Bankey Bihari Kunj – Residential Plots Vrindavan | BrajProperty',
+  'bankey-bihari-greens': 'Bankey Bihari Greens – Premium Plots in Vrindavan | BrajProperty',
+  'braj-anand-vatika': 'Braj Anand Vatika – Invest in Vrindavan Real Estate | BrajProperty',
+};
 
 export default function ProjectDetailPage() {
   const { slug } = useParams();
   const project = projects.find((p) => p.slug === slug);
   const [selectedImage, setSelectedImage] = useState(0);
   const [formSubmitted, setFormSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (slug && projectTitles[slug]) {
+      document.title = projectTitles[slug];
+    } else if (project) {
+      document.title = `${project.name} – Plots in Vrindavan | BrajProperty`;
+    }
+    return () => {
+      document.title = 'BrajProperty.in - Invest Right. Live Better. Earn Smarter.';
+    };
+  }, [slug, project]);
 
   if (!project) {
     return (

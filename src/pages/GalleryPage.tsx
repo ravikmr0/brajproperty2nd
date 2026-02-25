@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { galleryImages, TAGLINE } from '../data/siteData';
 import { X } from 'lucide-react';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 const categories = [
   'All',
@@ -11,6 +12,7 @@ const categories = [
 ];
 
 export default function GalleryPage() {
+  usePageTitle('Project Gallery – Vrindavan Property Photos & Videos | BrajProperty');
   const [activeCategory, setActiveCategory] = useState('All');
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
   const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});

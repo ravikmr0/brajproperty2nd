@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { usePageTitle } from '@/hooks/usePageTitle';
 import {
   Phone, ArrowRight, Shield, FileCheck, TrendingUp, CreditCard, Building2, Star,
   CheckCircle2, ChevronRight, ChevronLeft, Quote, MapPin,
@@ -40,6 +41,7 @@ const heroSlides = [
 ];
 
 export default function HomePage() {
+  usePageTitle('Plots in Vrindavan | MVDA Approved Properties | BrajProperty');
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 

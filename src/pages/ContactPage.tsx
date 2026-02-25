@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { usePageTitle } from '@/hooks/usePageTitle';
 import {
   Phone,
   Mail,
@@ -83,6 +84,7 @@ function FloatingParticles() {
 }
 
 export default function ContactPage() {
+  usePageTitle('Contact Us – Buy Plots in Vrindavan | BrajProperty');
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');

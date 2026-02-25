@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
+import { usePageTitle } from '@/hooks/usePageTitle';
 import {
   Shield, FileCheck, MapPin, Users, Heart, Building2,
   ArrowRight, CheckCircle2, Landmark, Target,
   TrendingUp, Plane, TreePine, Award, Handshake
 } from 'lucide-react';
-import { projects } from '@/data/siteData';
+import { projects, managementTeam } from '@/data/siteData';
 
 const trustPoints = [
   {
@@ -65,6 +66,7 @@ const legacyPoints = [
 ];
 
 export default function AboutPage() {
+  usePageTitle('About Us – Trusted Real Estate Agency in Vrindavan | BrajProperty');
   return (
     <div className="pt-16 md:pt-20">
 
@@ -262,6 +264,67 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ===== MANAGEMENT TEAM ===== */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 via-white to-saffron-50/20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,rgba(255,153,51,0.06),transparent_50%)]"></div>
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <div className="text-center mb-14">
+            <span className="inline-block px-4 py-2 bg-gradient-to-r from-saffron-500 to-temple-600 text-white text-xs font-bold uppercase tracking-widest rounded-full shadow-lg mb-4">
+              Our Leadership
+            </span>
+            <h2 className="text-3xl md:text-5xl font-heading font-bold text-gray-900 mb-4">
+              Meet the{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-saffron-500 to-temple-600">
+                Team
+              </span>
+            </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Passionate leaders committed to making your Vrindavan investment journey seamless and rewarding.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {managementTeam.map((member) => (
+              <div
+                key={member.name}
+                className="group relative"
+              >
+                {/* Hover glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-saffron-500 to-temple-600 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+
+                <div className="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 group-hover:border-transparent h-full flex flex-col">
+                  {/* Image Container */}
+                  <div className="relative h-72 overflow-hidden">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                    {/* Name overlay on image */}
+                    <div className="absolute bottom-0 left-0 right-0 p-5">
+                      <h3 className="text-xl font-heading font-bold text-white mb-1 drop-shadow-lg">
+                        {member.name}
+                      </h3>
+                      <span className="inline-block px-3 py-1 bg-saffron-500/90 backdrop-blur-sm text-white text-xs font-semibold rounded-full">
+                        {member.designation}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Bio */}
+                  <div className="p-6 flex-1 flex flex-col">
+                    <p className="text-gray-600 text-sm leading-relaxed flex-1">
+                      {member.bio}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===== 6. INVESTMENT + EMOTIONAL ANGLE ===== */}
       <section className="py-16 md:py-24 bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(139,69,19,0.04),transparent_60%)]"></div>
@@ -319,40 +382,6 @@ export default function AboutPage() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== 7. CTA SECTION ===== */}
-      <section className="py-20 md:py-28 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-saffron-500 via-temple-600 to-saffron-500"></div>
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1585128903994-9788298932a4?w=1920&q=60')] bg-cover bg-center opacity-10"></div>
-
-        {/* Decorative circles */}
-        <div className="absolute top-0 left-0 w-64 h-64 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 right-0 w-80 h-80 bg-white/5 rounded-full translate-x-1/3 translate-y-1/3"></div>
-
-        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4 leading-tight">
-            Invest Right. Invest in Braj.
-          </h2>
-          <p className="text-white/80 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
-            Take the first step towards securing your family's future in the most sacred land of India.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              to="/projects"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-saffron-600 hover:bg-gray-100 font-bold rounded-lg transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-0.5 text-lg"
-            >
-              <Building2 className="w-5 h-5 mr-2" />
-              View Projects
-            </Link>
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-bold rounded-lg border-2 border-white/80 hover:bg-white/10 transition-all duration-300 hover:-translate-y-0.5 text-lg"
-            >
-              Contact Us <ArrowRight className="w-5 h-5 ml-2" />
-            </Link>
           </div>
         </div>
       </section>
