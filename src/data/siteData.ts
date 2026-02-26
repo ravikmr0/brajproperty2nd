@@ -1,4 +1,4 @@
-export const PHONE_NUMBER = '+919876543210';
+export const PHONE_NUMBER = '+916395103201';
 export const WHATSAPP_NUMBER = '919876543210';
 export const EMAIL = 'info@brajproperty.in';
 export const ADDRESS = 'Vrindavan, Mathura, Uttar Pradesh, India';
