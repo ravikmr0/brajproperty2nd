@@ -16,7 +16,7 @@ import AboutPage from '@/pages/AboutPage';
 import ScrollToTop from '@/components/ScrollToTop';
 import { EMAIL, PHONE_NUMBER, TAGLINE } from '@/data/siteData';
 
-const MAINTENANCE_MODE = true;
+const MAINTENANCE_MODE = false;
 
 class ErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean; error: Error | null }> {
   constructor(props: { children: ReactNode }) {
